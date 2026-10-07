@@ -1,0 +1,504 @@
+{
+ "day": "day2",
+ "break": "<break time=\"1.5s\" />",
+ "blocks": [
+  {
+   "file": "d2-01.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Welcome back.",
+     "files": [
+      "d2-01-1.mp3"
+     ]
+    },
+    {
+     "say": "Yesterday you did Part 1.",
+     "files": [
+      "d2-01-2.mp3"
+     ]
+    },
+    {
+     "say": "Short questions, short answers.",
+     "files": [
+      "d2-01-3.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-02.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Today is Part 2. The cue card.",
+     "files": [
+      "d2-02-1.mp3"
+     ]
+    },
+    {
+     "say": "This is the part people are most scared of.",
+     "files": [
+      "d2-02-2.mp3"
+     ]
+    },
+    {
+     "say": "And honestly, the most predictable, once you know how it works.",
+     "files": [
+      "d2-02-3.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-03.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "The examiner hands you a card.",
+     "files": [
+      "d2-03-1.mp3"
+     ]
+    },
+    {
+     "say": "It has a topic on it,",
+     "files": [
+      "d2-03-2.mp3"
+     ]
+    },
+    {
+     "say": "and three or four points under it.",
+     "files": [
+      "d2-03-3.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-04.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "You get one minute to prepare.",
+     "files": [
+      "d2-04-1.mp3"
+     ]
+    },
+    {
+     "say": "You can write notes.",
+     "files": [
+      "d2-04-2.mp3"
+     ]
+    },
+    {
+     "say": "Then you speak for one to two minutes.",
+     "files": [
+      "d2-04-3.mp3"
+     ]
+    },
+    {
+     "say": "On your own. Nobody helps you.",
+     "files": [
+      "d2-04-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-05.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "And by the way, if the examiner stops you at two minutes,",
+     "files": [
+      "d2-05-1.mp3"
+     ]
+    },
+    {
+     "say": "that is not a bad sign.",
+     "files": [
+      "d2-05-2.mp3"
+     ]
+    },
+    {
+     "say": "That is a good sign.",
+     "files": [
+      "d2-05-3.mp3"
+     ]
+    },
+    {
+     "say": "It means you filled the whole time.",
+     "files": [
+      "d2-05-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-06.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Now, the trick is in that one minute.",
+     "files": [
+      "d2-06-1.mp3"
+     ]
+    },
+    {
+     "say": "Don\u2019t write sentences, there is no time for sentences.",
+     "files": [
+      "d2-06-2.mp3"
+     ]
+    },
+    {
+     "say": "Write one word for each point.",
+     "files": [
+      "d2-06-3.mp3"
+     ]
+    },
+    {
+     "say": "Four points, four words.",
+     "files": [
+      "d2-06-4.mp3"
+     ]
+    },
+    {
+     "say": "That is your map.",
+     "files": [
+      "d2-06-5.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-07.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Rough guide for the time.",
+     "files": [
+      "d2-07-1.mp3"
+     ]
+    },
+    {
+     "say": "Four points, two minutes,",
+     "files": [
+      "d2-07-2.mp3"
+     ]
+    },
+    {
+     "say": "so about thirty seconds on each point.",
+     "files": [
+      "d2-07-3.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-08.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Let me show you the whole thing with an example first.",
+     "files": [
+      "d2-08-1.mp3"
+     ]
+    },
+    {
+     "say": "Pick a theme.",
+     "files": [
+      "d2-08-2.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-09.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Okay. Say this is your card.",
+     "files": [
+      "d2-09-1.mp3"
+     ]
+    },
+    {
+     "say": "If this were mine, my notes would just be four words.",
+     "files": [
+      "d2-09-2.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-10.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Now listen to how those four words turn into a full answer.",
+     "files": [
+      "d2-10-1.mp3"
+     ]
+    },
+    {
+     "say": "This one runs about a minute, which is what you are aiming for.",
+     "files": [
+      "d2-10-2.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-11-movie.mp3",
+   "voice": "student",
+   "lines": [
+    {
+     "say": "I recently watched 'The Pursuit of Happyness', with Will Smith and his son Jaden.",
+     "files": [
+      "d2-11-movie-1.mp3"
+     ]
+    },
+    {
+     "say": "It's based on a true story, about a salesman who loses everything, and at one point he's sleeping in a train station bathroom with his little boy.",
+     "files": [
+      "d2-11-movie-2.mp3"
+     ]
+    },
+    {
+     "say": "I'd heard it had a really inspiring message, and I'm a Will Smith fan anyway, so one weekend I finally sat down and watched it.",
+     "files": [
+      "d2-11-movie-3.mp3"
+     ]
+    },
+    {
+     "say": "There's a scene where he tells his son, don't ever let somebody tell you you can't do something. That line stayed with me for days.",
+     "files": [
+      "d2-11-movie-4.mp3"
+     ]
+    },
+    {
+     "say": "And honestly, the whole film made me think about how much I take for granted.",
+     "files": [
+      "d2-11-movie-5.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-11-hobby.mp3",
+   "voice": "student",
+   "lines": [
+    {
+     "say": "I've recently gotten into gardening.",
+     "files": [
+      "d2-11-hobby-1.mp3"
+     ]
+    },
+    {
+     "say": "It started when I found my grandmother's old gardening book in the attic. I got curious, bought some seeds, and just tried.",
+     "files": [
+      "d2-11-hobby-2.mp3"
+     ]
+    },
+    {
+     "say": "The first month was a disaster. I overwatered everything and my tomatoes died in two weeks.",
+     "files": [
+      "d2-11-hobby-3.mp3"
+     ]
+    },
+    {
+     "say": "But slowly I figured it out, and now I've got a small balcony garden. Chillies, mint, a few marigolds.",
+     "files": [
+      "d2-11-hobby-4.mp3"
+     ]
+    },
+    {
+     "say": "It's a little morning ritual now. Ten quiet minutes before the day starts, before the phone starts ringing.",
+     "files": [
+      "d2-11-hobby-5.mp3"
+     ]
+    },
+    {
+     "say": "Honestly, it's become the calmest part of my day, and I don't see myself stopping.",
+     "files": [
+      "d2-11-hobby-6.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-12-movie.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "You heard it, right?",
+     "files": [
+      "d2-12-movie-1.mp3"
+     ]
+    },
+    {
+     "say": "The card, point by point, in order.",
+     "files": [
+      "d2-12-movie-2.mp3"
+     ]
+    },
+    {
+     "say": "And look at the ending.",
+     "files": [
+      "d2-12-movie-3.mp3"
+     ]
+    },
+    {
+     "say": "It wasn\u2019t about the film any more. It was about what changed for the speaker.",
+     "files": [
+      "d2-12-movie-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-12-hobby.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "You heard it, right?",
+     "files": [
+      "d2-12-hobby-1.mp3"
+     ]
+    },
+    {
+     "say": "The card, point by point, in order.",
+     "files": [
+      "d2-12-hobby-2.mp3"
+     ]
+    },
+    {
+     "say": "And look at the ending.",
+     "files": [
+      "d2-12-hobby-3.mp3"
+     ]
+    },
+    {
+     "say": "It wasn\u2019t about the plants any more. It was about what they changed in her day.",
+     "files": [
+      "d2-12-hobby-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-13.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "When you end with a feeling, the answer sounds finished.",
+     "files": [
+      "d2-13-1.mp3"
+     ]
+    },
+    {
+     "say": "That is all the structure you need.",
+     "files": [
+      "d2-13-2.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-14.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Okay, your turn now. Here is your card.",
+     "files": [
+      "d2-14-1.mp3"
+     ]
+    },
+    {
+     "say": "Describe a trip you went on recently.",
+     "files": [
+      "d2-14-2.mp3"
+     ]
+    },
+    {
+     "say": "Look at your points. Where, who, what, why it was memorable.",
+     "files": [
+      "d2-14-3.mp3"
+     ]
+    },
+    {
+     "say": "Those are basically your four words already.",
+     "files": [
+      "d2-14-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-17.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "That was up to two minutes of speaking on your own.",
+     "files": [
+      "d2-17-1.mp3"
+     ]
+    },
+    {
+     "say": "That is not a small thing.",
+     "files": [
+      "d2-17-2.mp3"
+     ]
+    },
+    {
+     "say": "However it went, the first cue card is hard for everyone.",
+     "files": [
+      "d2-17-3.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-18.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "That is the end of today.",
+     "files": [
+      "d2-18-1.mp3"
+     ]
+    },
+    {
+     "say": "You will see how you did in a moment.",
+     "files": [
+      "d2-18-2.mp3"
+     ]
+    },
+    {
+     "say": "Tomorrow, the discussion round.",
+     "files": [
+      "d2-18-3.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d2-19.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Nice work today.",
+     "files": [
+      "d2-19-1.mp3"
+     ]
+    },
+    {
+     "say": "See you tomorrow.",
+     "files": [
+      "d2-19-2.mp3"
+     ]
+    }
+   ]
+  }
+ ]
+}

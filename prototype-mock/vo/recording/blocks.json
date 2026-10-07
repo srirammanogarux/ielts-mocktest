@@ -1,0 +1,342 @@
+{
+ "day": "mock",
+ "break": "<break time=\"1.5s\" />",
+ "blocks": [
+  {
+   "file": "mk-01.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Right.",
+     "files": [
+      "mk-01-1.mp3"
+     ]
+    },
+    {
+     "say": "Today is the real thing.",
+     "files": [
+      "mk-01-2.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-02.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Three parts, back to back.",
+     "files": [
+      "mk-02-1.mp3"
+     ]
+    },
+    {
+     "say": "Part 1, about you.",
+     "files": [
+      "mk-02-2.mp3"
+     ]
+    },
+    {
+     "say": "Part 2, the cue card.",
+     "files": [
+      "mk-02-3.mp3"
+     ]
+    },
+    {
+     "say": "Part 3, the discussion.",
+     "files": [
+      "mk-02-4.mp3"
+     ]
+    },
+    {
+     "say": "About ten minutes. Same as the test.",
+     "files": [
+      "mk-02-5.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-03.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "One difference from the last three days.",
+     "files": [
+      "mk-03-1.mp3"
+     ]
+    },
+    {
+     "say": "Nobody is going to stop you.",
+     "files": [
+      "mk-03-2.mp3"
+     ]
+    },
+    {
+     "say": "And nobody shows you a good answer afterwards.",
+     "files": [
+      "mk-03-3.mp3"
+     ]
+    },
+    {
+     "say": "You just do it.",
+     "files": [
+      "mk-03-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-05.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "Good morning, I am Nolan.",
+     "files": [
+      "mk-05-1.mp3"
+     ]
+    },
+    {
+     "say": "I will be your examiner today.",
+     "files": [
+      "mk-05-2.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-06.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "Can you tell me your full name, please?",
+     "files": [
+      "mk-06-1.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-07.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "And where are you from?",
+     "files": [
+      "mk-07-1.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-08.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "Do you live in a house or an apartment?",
+     "files": [
+      "mk-08-1.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-09.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "What do you like most about the place you live in?",
+     "files": [
+      "mk-09-1.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-10.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "Is there anything you would change about it?",
+     "files": [
+      "mk-10-1.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-11.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "What do you usually do when you are not working or studying?",
+     "files": [
+      "mk-11-1.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-12.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "Do you prefer spending your free time alone or with other people?",
+     "files": [
+      "mk-12-1.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-13.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "Has the way you spend your free time changed in the last few years?",
+     "files": [
+      "mk-13-1.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-14.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "Now I am going to give you a topic.",
+     "files": [
+      "mk-14-1.mp3"
+     ]
+    },
+    {
+     "say": "You will have one minute to think.",
+     "files": [
+      "mk-14-2.mp3"
+     ]
+    },
+    {
+     "say": "You can make some notes if you wish.",
+     "files": [
+      "mk-14-3.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-15.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "Ready for Part 2. Here is your cue card.",
+     "files": [
+      "mk-15-1.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-18.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "Do you still see this person?",
+     "files": [
+      "mk-18-1.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-19.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "Why do you think some people are better at teaching than others?",
+     "files": [
+      "mk-19-1.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-20.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "Which is more useful for young people to learn: practical skills, or academic knowledge?",
+     "files": [
+      "mk-20-1.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-21.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "How has the way people learn changed compared with a generation ago?",
+     "files": [
+      "mk-21-1.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-22.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "Do you think schools will look very different fifty years from now?",
+     "files": [
+      "mk-22-1.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-23.mp3",
+   "voice": "nolan",
+   "lines": [
+    {
+     "say": "Thank you.",
+     "files": [
+      "mk-23-1.mp3"
+     ]
+    },
+    {
+     "say": "That is the end of the speaking test.",
+     "files": [
+      "mk-23-2.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "mk-24.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "That is it.",
+     "files": [
+      "mk-24-1.mp3"
+     ]
+    },
+    {
+     "say": "That is a whole speaking test, done.",
+     "files": [
+      "mk-24-2.mp3"
+     ]
+    },
+    {
+     "say": "However that felt, you just did the thing most people avoid until the day itself.",
+     "files": [
+      "mk-24-3.mp3"
+     ]
+    }
+   ]
+  }
+ ]
+}
