@@ -1,0 +1,474 @@
+{
+ "day": "day1",
+ "break": "<break time=\"1.5s\" />",
+ "blocks": [
+  {
+   "file": "d1-01.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Hi, welcome.",
+     "files": [
+      "d1-01-1.mp3"
+     ]
+    },
+    {
+     "say": "Let me walk you through what happens on test day.",
+     "files": [
+      "d1-01-2.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-02.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "You'll be sitting with one examiner.",
+     "files": [
+      "d1-02-1.mp3"
+     ]
+    },
+    {
+     "say": "Just the two of you, in one room.",
+     "files": [
+      "d1-02-2.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-03.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Part 1 is the easy one.",
+     "files": [
+      "d1-03-1.mp3"
+     ]
+    },
+    {
+     "say": "They ask about your home,",
+     "files": [
+      "d1-03-2.mp3"
+     ]
+    },
+    {
+     "say": "about your work,",
+     "files": [
+      "d1-03-3.mp3"
+     ]
+    },
+    {
+     "say": "and what you do on weekends.",
+     "files": [
+      "d1-03-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-04.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Part 2 is the topic card.",
+     "files": [
+      "d1-04-1.mp3"
+     ]
+    },
+    {
+     "say": "They hand you a card,",
+     "files": [
+      "d1-04-2.mp3"
+     ]
+    },
+    {
+     "say": "you get one minute to make notes,",
+     "files": [
+      "d1-04-3.mp3"
+     ]
+    },
+    {
+     "say": "then you speak on your own.",
+     "files": [
+      "d1-04-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-05.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Part 3 is a discussion.",
+     "files": [
+      "d1-05-1.mp3"
+     ]
+    },
+    {
+     "say": "Bigger questions about people in general,",
+     "files": [
+      "d1-05-2.mp3"
+     ]
+    },
+    {
+     "say": "not about you any more.",
+     "files": [
+      "d1-05-3.mp3"
+     ]
+    },
+    {
+     "say": "The whole test takes twelve to fourteen minutes.",
+     "files": [
+      "d1-05-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-06.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "While you talk, she is listening for four things.",
+     "files": [
+      "d1-06-1.mp3"
+     ]
+    },
+    {
+     "say": "How smoothly you speak.",
+     "files": [
+      "d1-06-2.mp3"
+     ]
+    },
+    {
+     "say": "The words you pick.",
+     "files": [
+      "d1-06-3.mp3"
+     ]
+    },
+    {
+     "say": "Your grammar.",
+     "files": [
+      "d1-06-4.mp3"
+     ]
+    },
+    {
+     "say": "And your pronunciation.",
+     "files": [
+      "d1-06-5.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-07.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "She is not judging your opinions.",
+     "files": [
+      "d1-07-1.mp3"
+     ]
+    },
+    {
+     "say": "You can love reading.",
+     "files": [
+      "d1-07-2.mp3"
+     ]
+    },
+    {
+     "say": "You can hate reading.",
+     "files": [
+      "d1-07-3.mp3"
+     ]
+    },
+    {
+     "say": "The score is exactly the same.",
+     "files": [
+      "d1-07-4.mp3"
+     ]
+    },
+    {
+     "say": "She is only listening to your English.",
+     "files": [
+      "d1-07-5.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-08.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "We'll practise each part, one by one.",
+     "files": [
+      "d1-08-1.mp3"
+     ]
+    },
+    {
+     "say": "Today, Part 1.",
+     "files": [
+      "d1-08-2.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-09.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "She just talks to you about your life.",
+     "files": [
+      "d1-09-1.mp3"
+     ]
+    },
+    {
+     "say": "Your home,",
+     "files": [
+      "d1-09-2.mp3"
+     ]
+    },
+    {
+     "say": "your work,",
+     "files": [
+      "d1-09-3.mp3"
+     ]
+    },
+    {
+     "say": "what you do on weekends.",
+     "files": [
+      "d1-09-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-10.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Here's what most people do.",
+     "files": [
+      "d1-10-1.mp3"
+     ]
+    },
+    {
+     "say": "Five words.",
+     "files": [
+      "d1-10-2.mp3"
+     ]
+    },
+    {
+     "say": "There's nothing in there to mark.",
+     "files": [
+      "d1-10-3.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-11.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Just keep going for one more sentence.",
+     "files": [
+      "d1-11-1.mp3"
+     ]
+    },
+    {
+     "say": "Now she has actually heard you speak.",
+     "files": [
+      "d1-11-2.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-12.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "So that is the only thing I want today.",
+     "files": [
+      "d1-12-1.mp3"
+     ]
+    },
+    {
+     "say": "Answer, then add one more sentence.",
+     "files": [
+      "d1-12-2.mp3"
+     ]
+    },
+    {
+     "say": "Go ahead, pick a topic.",
+     "files": [
+      "d1-12-3.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-13.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Here's your question.",
+     "files": [
+      "d1-13-1.mp3"
+     ]
+    },
+    {
+     "say": "Take a moment, then start when you are ready.",
+     "files": [
+      "d1-13-2.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-15.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "That was good.",
+     "files": [
+      "d1-15-1.mp3"
+     ]
+    },
+    {
+     "say": "However that felt, first answers are always short.",
+     "files": [
+      "d1-15-2.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-16.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Now listen to Aarav.",
+     "files": [
+      "d1-16-1.mp3"
+     ]
+    },
+    {
+     "say": "Another student of mine, who I taught last year.",
+     "files": [
+      "d1-16-2.mp3"
+     ]
+    },
+    {
+     "say": "Same question, same minute.",
+     "files": [
+      "d1-16-3.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-17.mp3",
+   "voice": "aarav",
+   "lines": [
+    {
+     "say": "I'm in my final year of college, studying commerce,",
+     "files": [
+      "d1-17-1.mp3"
+     ]
+    },
+    {
+     "say": "and on weekends I help out at my father\u2019s shop.",
+     "files": [
+      "d1-17-2.mp3"
+     ]
+    },
+    {
+     "say": "College gets stressful around exams, but I like my subjects.",
+     "files": [
+      "d1-17-3.mp3"
+     ]
+    },
+    {
+     "say": "And honestly, the shop has taught me more about business than my textbooks.",
+     "files": [
+      "d1-17-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-18.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Did you hear that?",
+     "files": [
+      "d1-18-1.mp3"
+     ]
+    },
+    {
+     "say": "The answer was one sentence.",
+     "files": [
+      "d1-18-2.mp3"
+     ]
+    },
+    {
+     "say": "Everything after it is what gets scored.",
+     "files": [
+      "d1-18-3.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-19.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "That's the end of today.",
+     "files": [
+      "d1-19-1.mp3"
+     ]
+    },
+    {
+     "say": "You will see how you did in a moment.",
+     "files": [
+      "d1-19-2.mp3"
+     ]
+    },
+    {
+     "say": "Tomorrow, the topic card.",
+     "files": [
+      "d1-19-3.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d1-20.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Nice work today.",
+     "files": [
+      "d1-20-1.mp3"
+     ]
+    },
+    {
+     "say": "See you tomorrow.",
+     "files": [
+      "d1-20-2.mp3"
+     ]
+    }
+   ]
+  }
+ ]
+}

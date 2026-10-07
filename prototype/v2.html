@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stimuler · IELTS Day 1 — v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --stage:#0B0B0B; --text:#EEE7DB; --text-muted:#9C9C9C; --word-dim:#7D786F;
+  --gold-word:#E9B94D; --gold-border:#9D7C4F; --amber-border:#C98F3F;
+  --green-word:#6FD37F; --green-border:#4E9E5C; --red-word:#E07A6E; --red-border:#6E332C;
+  --peach:#EAC9B6; --soft-border:#C9A98C; --surface:#262220;
+  --card-bg:linear-gradient(180deg,rgba(38,34,30,.5) 0%,rgba(24,22,20,.26) 100%);
+  --r-chip:14px; --r-card:16px; --r-full:999px;
+  --ease:cubic-bezier(.22,.61,.36,1); --out:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#171514;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+  display:flex;align-items:center;justify-content:center;gap:40px;min-height:100vh;padding:32px}
+
+.phone{position:relative;width:412px;height:917px;flex:0 0 auto;background:#000;border-radius:30px;
+  overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.05);isolation:isolate}
+
+/* stage colour arrives only when the film proper starts */
+.stagebg{position:absolute;inset:0;background:var(--stage);opacity:0;transition:opacity 1.1s var(--ease)}
+.stagebg.on{opacity:1}
+.backdrop{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity 1.4s var(--ease)}
+.backdrop.on{opacity:1}
+.backdrop::before{content:'';position:absolute;left:-40%;top:-18%;width:180%;height:120%;
+  background:radial-gradient(48% 38% at 50% 30%,rgba(190,150,110,.20) 0%,rgba(120,95,70,.07) 45%,rgba(0,0,0,0) 72%)}
+.backdrop::after{content:'';position:absolute;inset:49px 0 0 0;background:rgba(40,40,40,.31)}
+
+/* chrome fades in after the cold open */
+.chrome{opacity:0;transition:opacity .9s var(--ease)} .chrome.on{opacity:1}
+
+.status{position:absolute;left:0;top:0;width:412px;display:flex;align-items:center;
+  padding:21px 24px 19px;justify-content:space-between;z-index:8}
+.status b{color:#fff;font-size:17px;font-weight:600;letter-spacing:-.01em}
+.header{position:absolute;left:0;top:78px;width:412px;height:44px;z-index:8}
+.iconbtn{position:absolute;top:0;width:44px;height:44px;border-radius:var(--r-full);
+  background:rgba(58,56,52,.42);border:1px solid rgba(255,255,255,.11);display:flex;align-items:center;justify-content:center}
+.iconbtn.back{left:14px} .iconbtn.flag{left:354px}
+.track{position:absolute;left:72px;top:16px;width:268px;height:11px;border-radius:var(--r-full);
+  background:rgba(190,150,125,.34);box-shadow:inset 0 1px 2px rgba(0,0,0,.45)}
+.fill{position:absolute;left:0;top:0;height:11px;width:0;border-radius:var(--r-full);
+  background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,0) 60%),#C9A38A;transition:width .9s linear}
+.knob{position:absolute;top:-1px;left:-7px;width:13px;height:13px;border-radius:var(--r-full);
+  background:#fff;box-shadow:0 1px 5px rgba(0,0,0,.5);transition:left .9s linear}
+
+/* ---------- shot grammar ---------- */
+.rig{position:absolute;left:50%;z-index:4;
+  transition:width .8s var(--out),height .8s var(--out),top .8s var(--out),
+             margin-left .8s var(--out),opacity .55s var(--ease),transform 4.2s var(--out)}
+.rig .ring{position:absolute;inset:0;border-radius:var(--r-full);border:2px solid #A9805A;
+  box-shadow:0 0 34px -6px rgba(190,140,86,.42);transition:opacity .7s var(--ease),border-color .7s}
+.rig .hole{position:absolute;inset:5px;border-radius:var(--r-full);overflow:hidden;background:#000}
+.rig video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.shot-wide  {width:266px;height:266px;margin-left:-133px;top:176px;opacity:1}
+.shot-medium{width:154px;height:154px;margin-left:-77px; top:150px;opacity:1}
+.shot-close {width:214px;height:214px;margin-left:-107px;top:150px;opacity:1}
+.shot-close .ring{opacity:.35}
+.shot-close video{object-position:50% 14%;transform:scale(1.22)}
+.shot-tiny  {width:60px; height:60px; margin-left:-146px;top:142px;opacity:.45}
+.shot-tiny .ring{border-width:1.5px;box-shadow:none}
+.shot-gone  {width:154px;height:154px;margin-left:-77px;top:150px;opacity:0;pointer-events:none}
+.rig.push{transform:scale(1.065)}
+
+/* ---------- captions ---------- */
+.capD{position:absolute;left:36px;width:340px;top:486px;z-index:6;color:#fff;
+  font-size:33px;font-weight:600;letter-spacing:-.028em;line-height:44px;text-align:center}
+.capB{position:absolute;left:36px;width:340px;top:326px;z-index:6;display:flex;flex-direction:column;align-items:center}
+.capB i{width:0;height:0;border-left:11px solid transparent;border-right:11px solid transparent;border-bottom:11px solid var(--surface)}
+.capB > span{display:inline-block;background:var(--surface);border:1px solid rgba(255,255,255,.09);
+  border-radius:var(--r-chip);box-shadow:0 8px 22px -10px rgba(0,0,0,.6);padding:13px 22px;
+  color:#D9D4CD;font-size:15px;font-weight:500;line-height:20px;letter-spacing:-.006em;text-align:center;max-width:340px}
+.hid{opacity:0;pointer-events:none}
+.ci{display:inline;animation:ci .46s var(--out) both}
+@keyframes ci{from{opacity:0;transform:translateY(9px);filter:blur(3px)}to{opacity:1;transform:none;filter:none}}
+.co{animation:co .26s var(--ease) both}
+.em{font-style:normal;color:inherit;transition:color .55s var(--ease)}
+.em.lit{color:var(--gold-word)}
+@keyframes co{to{opacity:0;transform:translateY(-7px)}}
+
+/* ---------- slot ---------- */
+.slot{position:absolute;left:36px;width:340px;top:436px;z-index:3}
+.slot.enter > *{animation:si .62s var(--out) both}
+@keyframes si{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.slot.leaving{animation:so .34s var(--ease) both}
+@keyframes so{to{opacity:0;transform:translateY(-10px)}}
+
+.kicker{color:var(--gold-word);font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.h2{color:#fff;font-size:30px;font-weight:600;letter-spacing:-.025em;line-height:39px}
+.body{color:var(--text-muted);font-size:15.5px;line-height:25px}
+.col{display:flex;flex-direction:column} .stack{display:flex;flex-direction:column;gap:12px}
+
+/* cold open */
+.micro{position:absolute;left:36px;width:340px;z-index:6;text-align:center;
+  color:#6E6A64;font-size:13.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+
+/* part cards */
+.pcard{display:flex;align-items:center;gap:16px;border-radius:var(--r-card);border:1.5px solid #3A342C;
+  padding:17px 20px;transition:border-color .55s var(--ease),background .55s var(--ease),padding .55s var(--ease)}
+.pcard > .col{flex:1 1 auto;min-width:0}
+.pcard .no{width:54px;flex:0 0 54px;font-size:13px;font-weight:600;letter-spacing:.1em;color:#7D786F;transition:color .55s}
+.pcard .tt{color:#B5B0A7;font-size:17px;font-weight:500;line-height:23px;transition:color .55s}
+.pcard .sub{color:#75716A;font-size:14px;line-height:19px;max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .55s var(--ease),opacity .45s var(--ease)}
+.pcard .min{margin-left:auto;color:#5E5A54;font-size:13.5px;font-weight:500;flex:0 0 auto;transition:color .55s}
+.pcard.on{border-color:var(--gold-border);background:var(--card-bg);padding:19px 20px}
+.pcard.on .no{color:var(--gold-word)} .pcard.on .tt{color:#fff}
+.pcard.on .sub{max-height:44px;opacity:1} .pcard.on .min{color:var(--word-dim)}
+
+/* criteria */
+.crit{display:flex;flex-wrap:wrap;gap:12px}
+.crit .cc{display:flex;align-items:center;gap:10px;padding:13px 18px 13px 15px;border:1.5px solid var(--gold-border);
+  border-radius:var(--r-full);background:var(--card-bg);color:#fff;font-size:15.5px;font-weight:500;
+  opacity:0;transform:translateY(10px) scale(.96);transition:opacity .5s var(--out),transform .5s var(--out)}
+.crit .cc.in{opacity:1;transform:none}
+
+.opin{border:1px solid #4A3D2A;background:#211E1A;border-radius:var(--r-card);padding:22px;display:flex;flex-direction:column;gap:16px}
+.quote{display:flex;align-items:center;gap:12px}
+.quote em{flex:1;font-style:normal;color:#fff;font-size:17px;line-height:24px}
+.quote .ok{color:var(--green-word);font-size:13px;font-weight:600;flex:0 0 auto}
+
+.bul{display:flex;flex-direction:column;gap:10px}
+.bul div{display:flex;align-items:flex-start;gap:12px}
+.bul i{width:5px;height:5px;border-radius:999px;background:var(--gold-word);flex:0 0 5px;margin-top:10px}
+.bul p{color:#A8A39B;font-size:16.5px;line-height:25px}
+
+/* --- the match-cut answer bubble --- */
+.chat{display:flex;flex-direction:column;gap:16px}
+.ask{align-self:flex-start;max-width:280px;background:#1E1C1A;border:1px solid #3A342C;
+  border-radius:20px 20px 20px 6px;padding:15px 20px;color:#B5B0A7;font-size:17px;line-height:25px}
+.ans{align-self:flex-end;max-width:300px;display:flex;gap:12px;padding:15px 18px;border-radius:20px 20px 6px 20px;
+  font-size:17px;line-height:26px;background:rgba(110,51,44,.28);border:1px solid var(--red-border);color:#E5C3BC;
+  transition:background .9s var(--ease),border-color .9s var(--ease),color .9s var(--ease)}
+.ans .mk{flex:0 0 17px;height:17px;margin-top:4px;position:relative}
+.ans .mk svg{position:absolute;inset:0;transition:opacity .5s var(--ease)}
+.ans .mk .g{opacity:0}
+.ans .more{max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .9s var(--out),opacity .7s var(--ease) .15s}
+.ans.plain{background:#1E1C1A;border-color:#3A342C;color:#B5B0A7}
+.ans.plain .mk{opacity:0}
+.ans.good{background:rgba(46,86,54,.24);border-color:var(--green-border);color:#D9EBDC}
+.ans.good .mk .r{opacity:0} .ans.good .mk .g{opacity:1}
+.ans.good .more{max-height:120px;opacity:1}
+
+.tip{display:flex;align-items:center;gap:12px;background:#211E1A;border:1px solid #4A3D2A;
+  border-radius:var(--r-chip);padding:15px 18px;color:var(--gold-word);font-size:15.5px;font-weight:500;line-height:21px}
+.choice{display:flex;flex-direction:column;gap:12px}
+.opt{display:flex;align-items:center;gap:16px;border:1.5px solid var(--gold-border);border-radius:var(--r-card);
+  background:var(--card-bg);padding:20px 22px;cursor:pointer;color:#fff;font-size:18px;font-weight:500;
+  transition:transform .18s var(--ease),border-color .25s,opacity .4s}
+.opt:hover{border-color:var(--amber-border)} .opt:active{transform:scale(.985)}
+.opt.picked{border-color:var(--gold-word);background:rgba(201,163,138,.13)}
+.opt.dim{opacity:.3}
+
+.qcard{position:relative;border:1.5px solid var(--gold-border);border-radius:var(--r-card);background:var(--card-bg);
+  padding:30px 26px;min-height:150px;display:flex;align-items:center;justify-content:center}
+.qcard p{color:#fff;font-size:23px;line-height:34px;text-align:center}
+.qcard.naked{border-color:#3A342C;background:transparent}
+.qtag{position:absolute;left:22px;top:-14px;display:flex;align-items:center;gap:7px;background:#26231F;
+  border:1.5px solid var(--gold-border);border-radius:10px;padding:3px 12px 3px 10px;
+  color:#C79A5A;font-size:13.5px;font-weight:500;letter-spacing:.02em}
+
+.miczone{position:absolute;left:0;top:742px;width:412px;z-index:6;display:flex;flex-direction:column;align-items:center;gap:12px}
+.mictip{background:var(--surface);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:7px 14px;color:#D9D4CD;font-size:13px;font-weight:500}
+.mic{width:84px;height:84px;border-radius:var(--r-full);border:0;cursor:pointer;
+  background:radial-gradient(ellipse 72% 72% at 50% 34%,#D9A94F 0%,#A8813A 100%);
+  box-shadow:0 0 0 8px rgba(227,178,74,.07),0 16px 32px -10px rgba(0,0,0,.6);
+  display:flex;align-items:center;justify-content:center;animation:mp 2.2s ease-in-out infinite}
+@keyframes mp{0%,100%{box-shadow:0 0 0 8px rgba(227,178,74,.07),0 16px 32px -10px rgba(0,0,0,.6)}
+  50%{box-shadow:0 0 0 17px rgba(227,178,74,.03),0 16px 32px -10px rgba(0,0,0,.6)}}
+.rec{position:absolute;left:24px;top:770px;width:364px;z-index:6;display:flex;flex-direction:column;align-items:center;gap:13px}
+.rectime{display:flex;align-items:center;gap:8px;color:var(--text-muted);font-size:13.5px;font-weight:500;letter-spacing:.03em}
+.rectime i{width:7px;height:7px;border-radius:999px;background:#E0483C;animation:bk 1.4s ease-in-out infinite}
+@keyframes bk{0%,100%{opacity:1}50%{opacity:.25}}
+.pill{width:364px;height:66px;border-radius:999px;background:#1E1C1A;border:1px solid #4A3D2A;
+  display:flex;align-items:center;justify-content:space-between;padding:0 9px}
+.pbtn{width:48px;height:48px;border-radius:999px;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.pbtn.x{background:#2E2A24} .pbtn.ok{background:#C9A38A}
+.bars{display:flex;align-items:center;gap:4px;height:38px}
+.bars i{width:3px;border-radius:2px;background:#C9A38A;height:8px}
+.bars i.lo{background:#8A7A5E} .bars i.hi{background:#F0DCC4}
+.nudge{position:absolute;left:36px;top:700px;width:340px;z-index:6;display:flex;align-items:center;gap:11px;
+  background:#2A2114;border:1px solid var(--amber-border);border-radius:var(--r-chip);padding:13px 16px;
+  color:var(--gold-word);font-size:14.5px;font-weight:500;line-height:20px;animation:ci .5s var(--out) both}
+
+.stu{display:flex;align-items:center;gap:14px}
+.stuav{width:58px;height:58px;border-radius:999px;flex:0 0 58px;border:1.5px solid var(--soft-border);
+  background:linear-gradient(160deg,#3A322C,#221D1A);display:flex;align-items:center;justify-content:center;
+  color:var(--peach);font-size:19px;font-weight:600}
+.stu .nm{color:#fff;font-size:17px;font-weight:500;line-height:23px}
+.stu .mt{color:#75716A;font-size:13.5px;line-height:19px}
+
+/* --- model answer, and its collapse into the skeleton --- */
+.model{display:flex;flex-direction:column;gap:14px}
+.ml{opacity:0;transform:translateY(12px);
+  transition:opacity .55s var(--out),transform .55s var(--out),gap .7s var(--ease),padding .7s var(--ease),border-color .7s}
+.ml.in{opacity:1;transform:none}
+.ml .tag{display:block;margin-bottom:6px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-word)}
+.ml .full{font-size:17px;line-height:27px;color:var(--gold-word);transition:opacity .45s var(--ease),max-height .7s var(--ease)}
+.ml .short{font-size:15.5px;line-height:22px;color:#B5B0A7;max-height:0;opacity:0;overflow:hidden;
+  transition:opacity .45s var(--ease) .3s,max-height .7s var(--ease) .2s}
+.ml.core .full{color:#fff;font-weight:500} .ml.core .tag{color:#8E8880}
+/* collapsed state */
+.model.fold{gap:0}
+.model.fold .ml{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid #2A2621;transform:none}
+.model.fold .ml .tag{margin-bottom:0;width:112px;flex:0 0 112px;font-size:13.5px;letter-spacing:0;
+  text-transform:none;font-weight:600;line-height:22px;color:var(--gold-word)}
+.model.fold .ml .txt{flex:1 1 auto;min-width:0}
+.model.fold .ml .full{max-height:0;opacity:0;overflow:hidden}
+.model.fold .ml .short{max-height:60px;opacity:1}
+.model.fold .ml.drop{max-height:0;opacity:0;padding:0;border:0;overflow:hidden}
+.warn{color:#75716A;font-size:13.5px;line-height:21px;padding-top:4px;opacity:0;transition:opacity .6s var(--ease)}
+.warn.in{opacity:1}
+
+.recap{border:1px solid #3A342C;background:#1A1815;border-radius:var(--r-card);padding:22px;display:flex;flex-direction:column;gap:16px}
+.play{display:flex;align-items:center;gap:11px}
+.play .pb{width:34px;height:34px;border-radius:999px;background:#2E2A24;display:flex;align-items:center;justify-content:center;flex:0 0 34px}
+.play .wv{flex:1;display:flex;align-items:center;gap:2.5px;height:20px}
+.play .wv i{width:2.5px;border-radius:2px;background:#8A7A6B}
+.play .tm{color:#75716A;font-size:13px;font-weight:500}
+.said{color:#B5B0A7;font-size:16.5px;line-height:26px}
+.rule{height:1px;background:#3A342C}
+.stats{display:flex;gap:26px}
+.stats div{display:flex;flex-direction:column;gap:3px}
+.stats b{color:#fff;font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:28px}
+.stats b.g{color:var(--gold-word)} .stats span{color:#75716A;font-size:12.5px;line-height:17px}
+.donechip{display:flex;align-items:center;gap:12px}
+.donechip i{width:34px;height:34px;border-radius:999px;background:#1E3222;border:1.5px solid var(--green-border);
+  display:flex;align-items:center;justify-content:center;flex:0 0 34px}
+.donechip b{color:var(--green-word);font-size:17px;font-weight:600}
+.tomorrow{border:1px solid #3A342C;background:#1A1815;border-radius:var(--r-card);padding:22px;display:flex;flex-direction:column;gap:12px}
+.cta{width:340px;height:58px;border-radius:var(--r-full);background:#C9A38A;border:0;cursor:pointer;
+  color:#1A1512;font-size:16.5px;font-weight:600;display:flex;align-items:center;justify-content:center}
+
+/* start gate */
+.gate{position:absolute;inset:0;z-index:30;background:#0A0908;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:26px;transition:opacity .8s var(--ease)}
+.gate.off{opacity:0;pointer-events:none}
+.gate .lbl{color:#6E6A64;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.gate .ttl{color:#EEE7DB;font-size:28px;font-weight:600;letter-spacing:-.025em}
+.gate button{width:76px;height:76px;border-radius:999px;border:1.5px solid #4A423A;background:#161412;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s var(--ease),border-color .3s}
+.gate button:hover{border-color:var(--gold-border);transform:scale(1.04)}
+.gate .hint{color:#4F4B46;font-size:12.5px}
+
+.side{width:300px;flex:0 0 300px;color:#8A8580;align-self:flex-start;padding-top:12px}
+.side h1{color:#EEE7DB;font-size:19px;font-weight:600;letter-spacing:-.02em;margin-bottom:4px}
+.side .v{color:var(--gold-word);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.side p{font-size:13.5px;line-height:21px;margin-bottom:18px}
+.side .ch{display:flex;flex-direction:column;gap:3px}
+.side .c{display:flex;gap:10px;padding:8px 10px;border-radius:8px;font-size:12.5px;line-height:17px;color:#6E6A64;
+  transition:background .3s,color .3s}
+.side .c b{flex:0 0 40px;font-weight:600;color:#55514C;font-variant-numeric:tabular-nums}
+.side .c.on{background:rgba(201,163,138,.12);color:#E9B94D} .side .c.on b{color:#E9B94D}
+.side .c.done{color:#5C5852}
+.side .ctl{display:flex;gap:8px;margin-top:18px}
+.side button{background:#231F1C;border:1px solid #3A342C;color:#C9C3BA;font-size:12.5px;font-weight:500;
+  padding:8px 14px;border-radius:8px;cursor:pointer;font-family:inherit}
+.side button:hover{border-color:#5A5048}
+</style>
+</head>
+<body>
+<div class="phone" id="phone">
+  <div class="stagebg" id="stagebg"></div>
+  <div class="backdrop" id="backdrop"></div>
+
+  <div class="chrome" id="chrome">
+    <div class="status"><b>9:41</b>
+      <svg width="82" height="22" viewBox="0 0 82 22"><path d="M3.7 13H2.5a1 1 0 0 0-1 1v2.5a1 1 0 0 0 1 1h1.2a1 1 0 0 0 1-1V14a1 1 0 0 0-1-1m5.2-2.5H7.7a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h1.2a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1M14.1 8h-1.2a1 1 0 0 0-1 1v7.5a1 1 0 0 0 1 1h1.2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1m5.2-2.5h-1.2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h1.2a1 1 0 0 0 1-1v-10a1 1 0 0 0-1-1" fill="#fff"/><path fill-rule="evenodd" d="M36.57 7.8c2.49 0 4.88.92 6.68 2.58.14.13.36.12.49 0l1.3-1.27a.34.34 0 0 0 0-.5 12.55 12.55 0 0 0-16.93 0 .34.34 0 0 0 0 .5l1.3 1.26c.13.13.34.14.48 0a10 10 0 0 1 6.68-2.57m0 4.22a5.4 5.4 0 0 1 3.67 1.44c.14.13.35.13.48 0l1.3-1.33a.37.37 0 0 0-.01-.52 7.9 7.9 0 0 0-10.88 0 .37.37 0 0 0 0 .52l1.29 1.32c.13.14.34.14.48 0 1-.92 2.31-1.43 3.67-1.43m2.52 2.8q0 .15-.1.28l-2.18 2.45a.3.3 0 0 1-.24.11.3.3 0 0 1-.24-.1l-2.18-2.46a.43.43 0 0 1 .01-.56 3.44 3.44 0 0 1 4.82 0 .4.4 0 0 1 .11.28" clip-rule="evenodd" fill="#fff"/><path fill-rule="evenodd" d="M70.5 5c2.05 0 3.08 0 3.88.34a4.3 4.3 0 0 1 2.28 2.28c.34.8.34 1.83.34 3.88s0 3.08-.34 3.88a4.3 4.3 0 0 1-2.28 2.28c-.8.34-1.83.34-3.88.34h-12c-2.05 0-3.08 0-3.88-.34a4.3 4.3 0 0 1-2.28-2.28c-.34-.8-.34-1.83-.34-3.88s0-3.08.34-3.88a4.3 4.3 0 0 1 2.28-2.28C55.42 5 56.45 5 58.5 5z" clip-rule="evenodd" fill="#fff" opacity=".35"/><path d="M54 11c0-1.4 0-2.1.27-2.63a2.5 2.5 0 0 1 1.1-1.1C55.9 7 56.6 7 58 7h13c1.4 0 2.1 0 2.64.27q.72.37 1.09 1.1C75 8.9 75 9.6 75 11v1c0 1.4 0 2.1-.27 2.64a2.5 2.5 0 0 1-1.1 1.09C73.1 16 72.4 16 71 16H58c-1.4 0-2.1 0-2.63-.27a2.5 2.5 0 0 1-1.1-1.1C54 14.1 54 13.4 54 12z" fill="#fff"/><path d="M78 9.5v4.08a2.2 2.2 0 0 0 1.33-2.04A2.2 2.2 0 0 0 78 9.5" fill="#fff" opacity=".35"/></svg>
+    </div>
+    <div class="header">
+      <div class="iconbtn back"><svg width="19" height="19" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="#C9C6C1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="track"><div class="fill" id="fill"></div><div class="knob" id="knob"></div></div>
+      <div class="iconbtn flag"><svg width="21" height="21" viewBox="0 0 256 256"><line x1="48" y1="222" x2="48" y2="58" stroke="#C9C6C1" stroke-width="18" stroke-linecap="round"/><path d="M48,176c64-55.43,112,55.43,176,0V56C160,111.43,112,.57,48,56" fill="none" stroke="#C9C6C1" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+  </div>
+
+  <div class="rig shot-gone" id="rig">
+    <div class="hole">
+      <video id="vA" src="assets/sarah.mp4" muted loop playsinline preload="auto"></video>
+      <video id="vB" src="assets/sarah.mp4" muted loop playsinline preload="auto" style="opacity:0"></video>
+    </div>
+    <div class="ring"></div>
+  </div>
+
+  <div class="capD hid" id="capD"></div>
+  <div class="capB hid" id="capB"><i></i><span></span></div>
+  <div class="micro hid" id="micro" style="top:600px"></div>
+  <div class="slot" id="slot"></div>
+  <div id="extra"></div>
+
+  
+</div>
+
+<div class="side">
+  <h1>IELTS · Day 1</h1>
+  <div class="v">Version 2 — the cut</div>
+  <p>Cold open, J/L cuts, shot grammar, silence beats, match cuts and sound design.</p>
+  <div class="ch" id="chapters"></div>
+  <div class="ctl"><button id="restart">Restart</button></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const rig=$('rig'), capD=$('capD'), capB=$('capB'), capBS=capB.querySelector('span'),
+      microEl=$('micro'), slot=$('slot'), extra=$('extra'), fillEl=$('fill'), knob=$('knob'),
+      stagebg=$('stagebg'), backdrop=$('backdrop'), chrome=$('chrome'), chapters=$('chapters');
+
+/* seamless loop: two videos offset by half, crossfaded across the seam */
+const vA=$('vA'), vB=$('vB');
+vA.play().catch(()=>{}); vB.play().catch(()=>{});
+vA.addEventListener('loadedmetadata',()=>{try{vB.currentTime=vA.duration/2}catch(e){}});
+(function blend(){const D=vA.duration||7.36,x=vA.currentTime||0,f=.7;
+  let a=1; if(x>D-f)a=(D-x)/f; else if(x<f)a=x/f;
+  vA.style.opacity=a; vB.style.opacity=1-a; requestAnimationFrame(blend);})();
+
+/* ---------- primitives ---------- */
+let T=[];
+const at=(ms,fn)=>T.push(setTimeout(fn,ms));
+const kill=()=>{T.forEach(clearTimeout);T=[]};
+function shot(n,push){ rig.className='rig shot-'+n;
+  if(push){ void rig.offsetWidth; rig.classList.add('push'); } }
+function say(txt,style,emph){
+  const host=style==='d'?capD:capB, el=style==='d'?capD:capBS, other=style==='d'?capB:capD;
+  other.classList.add('hid'); host.classList.remove('hid');
+  el.innerHTML=`<span class="ci">${emph?txt.replace(emph,`<em class="em">${emph}</em>`):txt}</span>`;
+  if(emph) at(780,()=>{const e=el.querySelector('.em'); if(e)e.classList.add('lit')});
+}
+function unsay(){[capD,capB].forEach(h=>{const s=h.querySelector('.ci');if(s)s.classList.add('co');});
+  at(250,()=>{capD.classList.add('hid');capB.classList.add('hid')});}
+function put(html,top){ slot.style.top=(top||436)+'px';
+  slot.classList.remove('enter'); void slot.offsetWidth; slot.innerHTML=html; slot.classList.add('enter'); }
+function pull(){ slot.classList.add('leaving');
+  at(340,()=>{slot.innerHTML='';slot.classList.remove('leaving','enter')}); }
+function micro(t,top){ microEl.style.top=(top||600)+'px'; microEl.classList.remove('hid');
+  microEl.innerHTML=`<span class="ci">${t}</span>`; }
+function unmicro(){ const s=microEl.querySelector('.ci'); if(s)s.classList.add('co');
+  at(250,()=>microEl.classList.add('hid')); }
+
+/* ---------- components ---------- */
+const I={
+ fluency:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 12c2.5 0 2.5-5 5-5s2.5 10 5 10 2.5-5 5-5" stroke="#E9B94D" stroke-width="1.9" stroke-linecap="round"/><path d="M21 12h1" stroke="#E9B94D" stroke-width="1.9" stroke-linecap="round"/></svg>`,
+ vocab:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z" stroke="#E9B94D" stroke-width="1.8" stroke-linejoin="round"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z" stroke="#E9B94D" stroke-width="1.8" stroke-linejoin="round"/></svg>`,
+ grammar:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 17.5 9.2 6.5l5.2 11" stroke="#E9B94D" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 13.6h6.4" stroke="#E9B94D" stroke-width="1.9" stroke-linecap="round"/><path d="M17 17.5h4" stroke="#E9B94D" stroke-width="1.9" stroke-linecap="round"/></svg>`,
+ pron:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="9.2" y="3" width="5.6" height="11" rx="2.8" stroke="#E9B94D" stroke-width="1.8"/><path d="M5.5 11.6v.9a6.5 6.5 0 0 0 13 0v-.9" stroke="#E9B94D" stroke-width="1.8" stroke-linecap="round"/><path d="M12 19v2.2" stroke="#E9B94D" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+ bulb:`<svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.6v.6h5.6v-.6c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3" stroke="#E9B94D" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.8 19h4.4" stroke="#E9B94D" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+ tick:`<svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 7" stroke="#6FD37F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+ work:`<svg width="21" height="21" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="2" stroke="#E9B94D" stroke-width="1.8"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" stroke="#E9B94D" stroke-width="1.8"/></svg>`,
+ heart:`<svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M12 20.5S4.5 16.1 4.5 10.9A4.2 4.2 0 0 1 12 8.3a4.2 4.2 0 0 1 7.5 2.6c0 5.2-7.5 9.6-7.5 9.6" stroke="#E9B94D" stroke-width="1.8" stroke-linejoin="round"/></svg>`,
+ chev:`<svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="margin-left:auto;opacity:.55"><path d="M9 5l7 7-7 7" stroke="#8A8175" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+ ban:`<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#E9B94D" stroke-width="1.8"/><path d="M6 18 18 6" stroke="#E9B94D" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+ play:`<svg width="13" height="15" viewBox="0 0 14 16"><path d="M2 1.5v13l10-6.5z" fill="#C9A38A"/></svg>`};
+
+const P=[['PART 1','About you','Short questions, short answers','4–5 min'],
+         ['PART 2','The topic card','Two minutes on your own','3–4 min'],
+         ['PART 3','The discussion','Bigger questions, same topic','4–5 min']];
+const parts=a=>`<div class="stack">`+P.map((p,i)=>
+  `<div class="pcard ${i===a-1?'on':''}" data-p="${i+1}"><div class="no">${p[0]}</div>
+   <div class="col"><div class="tt">${p[1]}</div><div class="sub">${p[2]}</div></div>
+   <div class="min">${p[3]}</div></div>`).join('')+`</div>`;
+const litPart=n=>[...document.querySelectorAll('.pcard')].forEach(c=>c.classList.toggle('on',+c.dataset.p===n));
+
+const qcard=(naked,tag)=>`<div class="qcard ${naked?'naked':''}">${tag?`<div class="qtag">${tag}</div>`:''}
+  <p>${naked?'Do you enjoy your work?':'What do you do for a living, and how do you feel about it?'}</p></div>`;
+const bubble=(plain)=>`<div class="chat"><div class="ask">Do you enjoy your work?</div>
+  <div class="ans ${plain?'plain':''}" id="ans"><div class="mk">
+  <svg class="r" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="#E07A6E" stroke-width="2.4" stroke-linecap="round"/></svg>
+  <svg class="g" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 7" stroke="#6FD37F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div><span>Yes, I enjoy my work.</span>
+  <span class="more">I get to meet new people every day — no two days are the same.</span></div></div></div>`;
+const crit=()=>`<div class="crit">${[['fluency','Fluency'],['vocab','Vocabulary'],['grammar','Grammar'],['pron','Pronunciation']]
+  .map(([k,n])=>`<div class="cc">${I[k]}${n}</div>`).join('')}</div>`;
+const opin=()=>`<div class="opin">${I.ban}
+  <div style="color:#fff;font-size:22px;font-weight:500;letter-spacing:-.015em;line-height:31px">Your opinions are not scored</div>
+  <div class="col" style="gap:12px"><div class="quote"><em>&ldquo;I love reading.&rdquo;</em><span class="ok">same score</span></div>
+  <div class="quote"><em>&ldquo;I hate reading.&rdquo;</em><span class="ok">same score</span></div></div>
+  <div class="body" style="font-size:15px">They&rsquo;re only listening to your English.</div></div>`;
+const p1intro=()=>`<div class="col" style="gap:10px"><div class="kicker">Part 1</div>
+  <div class="h2" style="font-size:31px;line-height:41px">Simple questions about you</div>
+  <div class="bul" style="padding-top:6px"><div><i></i><p>Your home</p></div>
+  <div><i></i><p>Your work</p></div><div><i></i><p>What you do on weekends</p></div></div></div>`;
+const examiner=()=>`<div style="border:1.5px solid #3A342C;border-radius:18px;background:linear-gradient(160deg,#211D1A,#15120F);height:250px;overflow:hidden;position:relative">
+  <svg viewBox="0 0 340 250" width="340" height="250"><rect x="0" y="176" width="340" height="74" fill="#1B1714"/>
+  <circle cx="96" cy="118" r="30" fill="#39312B"/><path d="M40 200c0-30 25-44 56-44s56 14 56 44z" fill="#39312B"/>
+  <circle cx="238" cy="106" r="32" fill="#4C423A"/><path d="M180 200c0-32 26-47 58-47s58 15 58 47z" fill="#4C423A"/>
+  <rect x="196" y="186" width="96" height="6" rx="3" fill="#2A241F"/></svg>
+  <div style="position:absolute;left:0;bottom:0;width:340px;padding:14px 18px;background:linear-gradient(0deg,rgba(10,9,8,.92),rgba(10,9,8,0));color:#B5B0A7;font-size:13.5px">One examiner. One room. Recorded.</div></div>`;
+const pick=()=>`<div class="col" style="gap:22px"><div class="tip">${I.bulb}Answer, then add one more sentence</div>
+  <div class="choice"><div class="opt" data-pick="Work">${I.work}Work${I.chev}</div>
+  <div class="opt" data-pick="Hobbies">${I.heart}Hobbies${I.chev}</div></div></div>`;
+const student=()=>`<div class="col" style="gap:20px"><div class="stu"><div class="stuav">AR</div>
+  <div class="col"><div class="nm">Aarav &middot; another student</div><div class="mt">same question, same minute</div></div></div>
+  <div style="border-left:2px solid #3A342C;padding-left:14px;color:#75716A;font-size:14.5px;line-height:22px">
+  What do you do for a living, and how do you feel about it?</div></div>`;
+const M=[['the answer',"I'm in my final year of college, studying commerce,",'What you do','final year, studying commerce'],
+         ['one detail','and on weekends I help out at my father&rsquo;s shop.','One detail','weekends at my father&rsquo;s shop'],
+         ['how you feel','College gets stressful around exams, but I like my subjects.','How you feel','stressful, but I like it'],
+         ['a small opinion','And honestly, the shop has taught me more about business than my textbooks.','','']];
+const model=()=>`<div class="col" style="gap:18px">
+  <div class="stu"><div class="stuav">AR</div><div class="col"><div class="nm">Aarav</div><div class="mt">playing &middot; 0:24</div></div></div>
+  <div class="model" id="mbox">`+M.map((m,i)=>`<div class="ml ${i===0?'core':''}" data-i="${i}">
+  <span class="tag">${m[0]}</span><div class="txt"><div class="full">${m[1]}</div><div class="short">${m[3]}</div></div></div>`).join('')+
+  `</div><div class="warn" id="warn">Don&rsquo;t memorise answers like this one &mdash; examiners catch it straight away. Take the order, not the words.</div></div>`;
+const wv=n=>Array.from({length:n},(_,i)=>`<i style="height:${6+Math.round(Math.abs(Math.sin(i*1.7))*13)}px"></i>`).join('');
+const recap=()=>`<div class="col" style="gap:20px"><div class="col" style="gap:10px">
+  <div class="kicker" style="color:#7D786F">Day 1 &middot; your answer</div>
+  <div class="h2">You answered.<br>Then you stopped.</div></div>
+  <div class="recap"><div class="play"><div class="pb">${I.play}</div><div class="wv">${wv(9)}</div><div class="tm">0:11</div></div>
+  <div class="said">&ldquo;I work as a graphic designer at a small studio.&rdquo;</div><div class="rule"></div>
+  <div class="stats"><div><b>1</b><span>sentence</span></div><div><b>11</b><span>seconds</span></div>
+  <div><b class="g">25s</b><span>to aim for</span></div></div></div>
+  <div class="opin" style="gap:12px"><div class="kicker">Tomorrow, try this</div>
+  <div style="color:#EEE7DB;font-size:16.5px;line-height:26px">You said what you do. Add why you chose it, or one thing that happened this week. That is the whole skill.</div></div></div>`;
+const done=()=>`<div class="col" style="gap:20px"><div class="donechip"><i>${I.tick}</i><b>Day 1 done</b></div>
+  <div class="h2">You spoke for the first time.</div>
+  <div class="tomorrow"><div class="kicker" style="color:#7D786F">Tomorrow</div>
+  <div style="color:#EEE7DB;font-size:19px;font-weight:500;line-height:27px">The topic card</div>
+  <div class="body">You speak for two whole minutes on your own. One minute to prepare, and you can write notes.</div></div>
+  <button class="cta" style="margin-top:6px">Done</button></div>`;
+
+/* ============================================================
+   THE CUT.  Each cue is [ms, action].  Where a visual and its
+   line are deliberately offset, the gap is the J- or L-cut.
+   ============================================================ */
+const hold = ()=>{};                     // documented dead air — nothing happens, on purpose
+const SC=[
+{ch:'Cold open', sub:'no logo, no welcome', end:16200, cues:[
+  [0,    ()=>{ chrome.classList.remove('on'); stagebg.classList.remove('on');
+               backdrop.classList.remove('on'); shot('gone'); slot.innerHTML=''; extra.innerHTML=''; }],
+  [700,  ()=>{ put(bubble(true),340); const a=$('ans'); a.style.opacity=0; a.style.transition='opacity .7s var(--out)'; }],
+  [2900, ()=>{ $('ans').style.opacity=1; }],
+  [4600, hold],                                            // ← 1.7s of nothing. the point.
+  [6300, ()=> micro('five words',624)],
+  [8300, ()=> unmicro()],
+  [8900, ()=> pull()],
+  [9300, ()=>{ stagebg.classList.add('on'); shot('close'); }],   // picture leads the line by 350ms
+  [9650, ()=> say("That's the whole answer.",'d')],
+  [12300,()=> say("Let me show you why that matters.",'d','why')],
+  [15100,()=> unsay()],
+  [15500,()=>{ backdrop.classList.add('on'); chrome.classList.add('on'); shot('wide'); }]
+]},
+
+{ch:'The test', sub:'what test day is', end:45800, cues:[
+  [200,  ()=> say("Let me walk you through what happens on test day.",'d')],
+  [3800, ()=> unsay()],
+  [4100, ()=>{ shot('medium'); put(examiner(),436); }],      // L-cut: picture first
+  [4550, ()=> say("You'll be sitting with one examiner.",'b')],
+  [6700, ()=> say("Just the two of you.",'b')],
+  [8900, ()=>{ pull(); unsay(); }],
+  [9400, ()=> put(parts(0),436)],                            // cards land before she names them
+  [9950, ()=>{ litPart(1); say("Part 1 is the easy one.",'b'); }],
+  [12200,()=> say("They just ask about your life.",'b')],
+  [14400,()=> litPart(2)],                                   // ← card moves 380ms early
+  [14780,()=> say("Part 2 is the topic card.",'b')],
+  [17000,()=> say("A minute to think, then you speak on your own.",'b')],
+  [19700,()=> litPart(3)],
+  [20080,()=> say("Part 3 is a discussion.",'b')],
+  [22200,()=> say("Bigger questions, same topic.",'b')],
+  [24500,()=> litPart(0)],                                   // all three collapse together
+  [24900,()=> say("The whole thing takes twelve to fourteen minutes.",'b','twelve to fourteen')],
+  [27900,()=>{ pull(); unsay(); }],
+  [28500,()=>{ put(crit(),440);
+               [...document.querySelectorAll('.crit .cc')].forEach((c,k)=>at(k*140,()=>c.classList.add('in'))); }],
+  [29050,()=> say("While you're talking, she's listening for four things.",'b','four things')],
+  [32700,()=>{ pull(); unsay(); }],
+  [33200,()=> put(opin(),432)],
+  [33600,()=> say("She's not judging your opinions.",'b')],
+  [35900,()=> say("She's only listening to your English.",'b','only')],
+  [38700,()=>{ pull(); unsay(); }],
+  [39400,()=> shot('wide')],
+  [39900,()=> say("We'll practise each part, one by one.",'d')],
+  [42700,()=> say("Today — Part 1.",'d','Part 1')],
+  [45300,()=> unsay()]
+]},
+
+{ch:'The lesson', sub:'five words → twenty', end:33200, gate:'choice', cues:[
+  [0,    ()=>{ shot('medium'); put(p1intro(),436); }],
+  [420,  ()=> say("The examiner just talks to you about your life.",'b')],
+  [3300, ()=> say("Four or five minutes of small talk.",'b')],
+  [5900, ()=>{ pull(); unsay(); }],
+  [6500, ()=> put(bubble(),440)],
+  [6900, ()=> say("Here's what most people do.",'b')],
+  [9300, ()=> say("Five words.",'b','Five words')],
+  [10700,hold],                                              // ← 1.1s. the screen does not move.
+  [11900,()=> say("There's nothing in there to mark.",'b')],
+  [14700,()=>{ const a=$('ans'); if(a) a.classList.add('good'); }],   // ← match cut, same bubble
+  [15100,()=> say("Just keep going for one more sentence.",'b','one more sentence')],
+  [18400,()=> say("Now she's actually heard you speak.",'b')],
+  [21600,()=>{ pull(); unsay(); }],
+  [22300,()=> shot('close',true)],                           // ← the push-in, on the thesis
+  [22900,()=> say("Answer — then add one more sentence.",'d','one more sentence')],
+  [26700,()=> say("That's the only thing I want from you today.",'d')],
+  [29900,()=>{ unsay(); shot('medium'); }],
+  [30500,()=> put(pick(),436)],
+  [30900,()=> say("Go ahead — pick a topic.",'b')],
+  [31600,()=> gateChoice()]
+]},
+
+{ch:'Your turn', sub:'real time, no cuts', end:6200, gate:'mic', cues:[
+  [0,    ()=> pull()],
+  [500,  ()=> put(qcard(false,'Part 1 · Work'),446)],
+  [950,  ()=> say("Here's your question.",'b')],
+  [3400, ()=> say("Take a moment. Start when you're ready.",'b')],
+  [5700, ()=>{ unsay(); gateMic(); }]
+]},
+
+{ch:'Another student', sub:'the answer, built', end:37600, cues:[
+  [0,    ()=>{ shot('wide'); pull(); extra.innerHTML=''; }],
+  [700,  ()=> say("That was good.",'d')],
+  [2700, hold],                                              // ← 900ms. let it land.
+  [3600, ()=> say("However that felt, don't worry.",'d')],
+  [6100, ()=> say("First answers are always short.",'d')],
+  [8700, ()=>{ unsay(); shot('medium'); }],
+  [9300, ()=> put(student(),446)],
+  [9750, ()=> say("While your feedback loads —",'b')],
+  [11700,()=> say("listen to how another student answered this.",'b')],
+  [14500,()=>{ unsay(); pull(); }],
+  [15100,()=>{ shot('tiny'); put(model(),236); }],
+  [16000,()=> mline(0)],                                     // the core answer, alone
+  [18700,()=> mline(1)],                                     // + one detail
+  [21000,()=> mline(2)],
+  [23300,()=> mline(3)],
+  [26100,()=> micro('the answer was one sentence',768)],
+  [28400,()=>{ const b=$('mbox'); if(b){ b.classList.add('fold');
+               M.forEach((m,k)=>{ const t=b.querySelector(`.ml[data-i="${k}"] .tag`); if(t&&m[2]) t.textContent=m[2]; });
+               const d=b.querySelector('.ml[data-i="3"]'); if(d) d.classList.add('drop'); } }],  // collapse, no cut
+  [30900,()=>{ unmicro(); at(400,()=>micro('everything else was extra — and that is what gets scored',760)); }],
+  [33600,()=>{ const w=$('warn'); if(w) w.classList.add('in'); }],
+  [36400,()=> unmicro()]
+]},
+
+{ch:'Payoff', sub:'your answer, and tomorrow', end:20000, cues:[
+  [0,    ()=>{ shot('gone'); pull(); }],
+  [520,  ()=> put(recap(),150)],
+  [9200, ()=> pull()],
+  [9820, ()=> put(done(),160)]
+]}];
+
+const mline=i=>{const e=document.querySelector(`.ml[data-i="${i}"]`); if(e) e.classList.add('in')};
+
+/* ---------- gates ---------- */
+function gateChoice(){
+  const opts=[...document.querySelectorAll('.opt')];
+  const go=el=>{opts.forEach(o=>o!==el&&o.classList.add('dim')); el.classList.add('picked');
+    kill(); at(800,()=>scene(si+1));};
+  opts.forEach(o=>o.onclick=()=>go(o));
+  at(4200,()=>{ if(!document.querySelector('.opt.picked')&&opts[0]) go(opts[0]); });
+}
+function gateMic(){
+  extra.innerHTML=`<div class="miczone"><div class="mictip">Tap to speak</div>
+    <button class="mic" id="micBtn"><svg width="27" height="38" viewBox="0 0 28 40" fill="none">
+    <rect x="9.2" y="2.6" width="9.6" height="22.4" rx="4.8" stroke="#fff" stroke-width="3.1"/>
+    <path d="M3.6 17.4v2.1a10.4 10.4 0 0 0 20.8 0v-2.1" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
+    <path d="M14 29.9v7.5" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/></svg></button></div>`;
+  const go=()=>{kill(); record();};
+  $('micBtn').onclick=go; at(4000,go);
+}
+function record(){
+  progressTo(cum(4)/TOTAL,15000);
+  extra.innerHTML=`<div class="rec"><div class="rectime"><i></i><span id="rt">0:00</span></div>
+    <div class="pill"><button class="pbtn x"><svg width="17" height="17" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="#A79C8C" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    <div class="bars" id="bars">${Array.from({length:20},()=>'<i></i>').join('')}</div>
+    <button class="pbtn ok" id="okBtn"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l5 5L19 7" stroke="#1A1512" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>`;
+  const bars=[...$('bars').children]; let s=0;
+  const anim=setInterval(()=>bars.forEach((b,k)=>{
+    const h=6+Math.abs(Math.sin(Date.now()/210+k*.8))*30*(k>16?.35:1);
+    b.style.height=h+'px'; b.className=h>26?'hi':h<12?'lo':'';}),70);
+  const tick=setInterval(()=>{s++; const rt=$('rt'); if(rt) rt.textContent='0:'+String(s).padStart(2,'0');
+    if(s===9&&!document.querySelector('.nudge'))
+      extra.insertAdjacentHTML('beforeend',`<div class="nudge">${I.bulb}Try adding one more sentence</div>`);
+    if(s>=14) stop();},1000);
+  const stop=()=>{clearInterval(anim);clearInterval(tick);kill();scene(4)};
+  $('okBtn').onclick=stop;
+}
+
+/* ---------- engine ---------- */
+let si=-1;
+const LEN=SC.map(s=>s.end + (s.gate==='choice'?5000:s.gate==='mic'?19000:0));
+const TOTAL=LEN.reduce((a,b)=>a+b,0);
+const cum=n=>LEN.slice(0,n+1).reduce((a,b)=>a+b,0);
+function progressTo(frac,ms){ const w=268*Math.min(frac,1);
+  fillEl.style.transition=`width ${ms}ms linear`; knob.style.transition=`left ${ms}ms linear`;
+  fillEl.style.width=w+'px'; knob.style.left=(w-7)+'px'; }
+
+SC.forEach((s,n)=>{const d=document.createElement('div');d.className='c';d.id='c'+n;
+  d.innerHTML=`<b>${String(n+1).padStart(2,'0')}</b><span>${s.ch}<br><span style="opacity:.6">${s.sub}</span></span>`;
+  chapters.appendChild(d)});
+
+function scene(n){
+  kill(); si=n; const S=SC[n];
+  [...chapters.children].forEach((c,k)=>c.className='c'+(k===n?' on':k<n?' done':''));
+  progressTo(cum(n)/TOTAL, LEN[n]);
+  S.cues.forEach(([t,fn])=>at(t,fn));
+  if(!S.gate) at(S.end,()=>{ if(n+1<SC.length) scene(n+1); });
+}
+$('restart').onclick=()=>location.reload();
+scene(0);
+
+</script>
+</body>
+</html>

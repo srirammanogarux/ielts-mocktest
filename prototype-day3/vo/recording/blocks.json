@@ -1,0 +1,654 @@
+{
+ "day": "day3",
+ "break": "<break time=\"1.5s\" />",
+ "blocks": [
+  {
+   "file": "d3-01.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Welcome back.",
+     "files": [
+      "d3-01-1.mp3"
+     ]
+    },
+    {
+     "say": "Quick recap.",
+     "files": [
+      "d3-01-2.mp3"
+     ]
+    },
+    {
+     "say": "Part 1 was short answers about your life.",
+     "files": [
+      "d3-01-3.mp3"
+     ]
+    },
+    {
+     "say": "Yesterday, the cue card. Two minutes on your own.",
+     "files": [
+      "d3-01-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-02.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Today is the last part.",
+     "files": [
+      "d3-02-1.mp3"
+     ]
+    },
+    {
+     "say": "Part 3. The discussion.",
+     "files": [
+      "d3-02-2.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-03.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "The examiner asks you three or four questions, one after another.",
+     "files": [
+      "d3-03-1.mp3"
+     ]
+    },
+    {
+     "say": "And these are not about you any more.",
+     "files": [
+      "d3-03-2.mp3"
+     ]
+    },
+    {
+     "say": "They are about the world. Technology, education, how society is changing.",
+     "files": [
+      "d3-03-3.mp3"
+     ]
+    },
+    {
+     "say": "You speak for about thirty seconds on each.",
+     "files": [
+      "d3-03-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-04.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Sounds heavy, but remember.",
+     "files": [
+      "d3-04-1.mp3"
+     ]
+    },
+    {
+     "say": "Your opinions are not being scored.",
+     "files": [
+      "d3-04-2.mp3"
+     ]
+    },
+    {
+     "say": "There are no wrong answers in this part.",
+     "files": [
+      "d3-04-3.mp3"
+     ]
+    },
+    {
+     "say": "What they are checking is whether you can back your opinion up.",
+     "files": [
+      "d3-04-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-05.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "So here is what I want you to do today.",
+     "files": [
+      "d3-05-1.mp3"
+     ]
+    },
+    {
+     "say": "For every question, say what you think.",
+     "files": [
+      "d3-05-2.mp3"
+     ]
+    },
+    {
+     "say": "Then say why.",
+     "files": [
+      "d3-05-3.mp3"
+     ]
+    },
+    {
+     "say": "And then give an example from your own life.",
+     "files": [
+      "d3-05-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-06.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Say the question is, how has technology changed the way we shop?",
+     "files": [
+      "d3-06-1.mp3"
+     ]
+    },
+    {
+     "say": "I could just say, people shop online now.",
+     "files": [
+      "d3-06-2.mp3"
+     ]
+    },
+    {
+     "say": "True. But that is five words, and we know that problem from Day 1.",
+     "files": [
+      "d3-06-3.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-07.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Now watch me do it with the habit.",
+     "files": [
+      "d3-07-1.mp3"
+     ]
+    },
+    {
+     "say": "My view. Shopping has moved to our phones.",
+     "files": [
+      "d3-07-2.mp3"
+     ]
+    },
+    {
+     "say": "Why. Because it saves time, and there is more choice.",
+     "files": [
+      "d3-07-3.mp3"
+     ]
+    },
+    {
+     "say": "And my example. My mother has not been to a market in two years.",
+     "files": [
+      "d3-07-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-08.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "That is thirty seconds, and it has everything.",
+     "files": [
+      "d3-08-1.mp3"
+     ]
+    },
+    {
+     "say": "My view, why, and an example from my life.",
+     "files": [
+      "d3-08-2.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-09.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Pick the theme you want to practise today.",
+     "files": [
+      "d3-09-1.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-10-tech.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Here is your first question.",
+     "files": [
+      "d3-10-tech-1.mp3"
+     ]
+    },
+    {
+     "say": "How do you think technology has changed the way we communicate with each other?",
+     "files": [
+      "d3-10-tech-2.mp3"
+     ]
+    },
+    {
+     "say": "Say what you think.",
+     "files": [
+      "d3-10-tech-3.mp3"
+     ]
+    },
+    {
+     "say": "Then say why.",
+     "files": [
+      "d3-10-tech-4.mp3"
+     ]
+    },
+    {
+     "say": "Then give an example from your own life.",
+     "files": [
+      "d3-10-tech-5.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-10-edu.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Here is your first question.",
+     "files": [
+      "d3-10-edu-1.mp3"
+     ]
+    },
+    {
+     "say": "How is school today different from when your parents were young?",
+     "files": [
+      "d3-10-edu-2.mp3"
+     ]
+    },
+    {
+     "say": "Compare as you go.",
+     "files": [
+      "d3-10-edu-3.mp3"
+     ]
+    },
+    {
+     "say": "Back then,",
+     "files": [
+      "d3-10-edu-4.mp3"
+     ]
+    },
+    {
+     "say": "whereas now.",
+     "files": [
+      "d3-10-edu-5.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-12-tech.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Nice. Here is the next one.",
+     "files": [
+      "d3-12-tech-1.mp3"
+     ]
+    },
+    {
+     "say": "What are the pros and cons of relying on technology in our daily lives?",
+     "files": [
+      "d3-12-tech-2.mp3"
+     ]
+    },
+    {
+     "say": "One good thing.",
+     "files": [
+      "d3-12-tech-3.mp3"
+     ]
+    },
+    {
+     "say": "One bad thing.",
+     "files": [
+      "d3-12-tech-4.mp3"
+     ]
+    },
+    {
+     "say": "And where you land.",
+     "files": [
+      "d3-12-tech-5.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-12-edu.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Nice. Here is the next one.",
+     "files": [
+      "d3-12-edu-1.mp3"
+     ]
+    },
+    {
+     "say": "What are the good and bad things about how kids learn in school today?",
+     "files": [
+      "d3-12-edu-2.mp3"
+     ]
+    },
+    {
+     "say": "One good thing.",
+     "files": [
+      "d3-12-edu-3.mp3"
+     ]
+    },
+    {
+     "say": "One bad thing.",
+     "files": [
+      "d3-12-edu-4.mp3"
+     ]
+    },
+    {
+     "say": "And where you land.",
+     "files": [
+      "d3-12-edu-5.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-14-tech.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Okay, here is the third one.",
+     "files": [
+      "d3-14-tech-1.mp3"
+     ]
+    },
+    {
+     "say": "In what ways has technology improved education for students?",
+     "files": [
+      "d3-14-tech-2.mp3"
+     ]
+    },
+    {
+     "say": "One way it helped.",
+     "files": [
+      "d3-14-tech-3.mp3"
+     ]
+    },
+    {
+     "say": "And then another.",
+     "files": [
+      "d3-14-tech-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-14-edu.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Okay, here is the third one.",
+     "files": [
+      "d3-14-edu-1.mp3"
+     ]
+    },
+    {
+     "say": "How can schools help students who learn in different ways?",
+     "files": [
+      "d3-14-edu-2.mp3"
+     ]
+    },
+    {
+     "say": "One idea.",
+     "files": [
+      "d3-14-edu-3.mp3"
+     ]
+    },
+    {
+     "say": "Then another. Two ideas beat one.",
+     "files": [
+      "d3-14-edu-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-16-tech.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "And here is the last one.",
+     "files": [
+      "d3-16-tech-1.mp3"
+     ]
+    },
+    {
+     "say": "How does technology affect jobs and employment opportunities?",
+     "files": [
+      "d3-16-tech-2.mp3"
+     ]
+    },
+    {
+     "say": "You are allowed to guess about the future.",
+     "files": [
+      "d3-16-tech-3.mp3"
+     ]
+    },
+    {
+     "say": "Start with, it is likely that.",
+     "files": [
+      "d3-16-tech-4.mp3"
+     ]
+    },
+    {
+     "say": "Or, in the long run.",
+     "files": [
+      "d3-16-tech-5.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-16-edu.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "And here is the last one.",
+     "files": [
+      "d3-16-edu-1.mp3"
+     ]
+    },
+    {
+     "say": "How do you think computers and the internet are changing what we learn in school?",
+     "files": [
+      "d3-16-edu-2.mp3"
+     ]
+    },
+    {
+     "say": "Touch all three.",
+     "files": [
+      "d3-16-edu-3.mp3"
+     ]
+    },
+    {
+     "say": "What it was,",
+     "files": [
+      "d3-16-edu-4.mp3"
+     ]
+    },
+    {
+     "say": "what it is,",
+     "files": [
+      "d3-16-edu-5.mp3"
+     ]
+    },
+    {
+     "say": "and what it will be.",
+     "files": [
+      "d3-16-edu-6.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-18.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "That is four questions back to back. Well done.",
+     "files": [
+      "d3-18-1.mp3"
+     ]
+    },
+    {
+     "say": "And if some answers felt thin, that is normal.",
+     "files": [
+      "d3-18-2.mp3"
+     ]
+    },
+    {
+     "say": "Part 3 is the hardest part for everyone.",
+     "files": [
+      "d3-18-3.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-19-tech.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Look at what you just did, though.",
+     "files": [
+      "d3-19-tech-1.mp3"
+     ]
+    },
+    {
+     "say": "Opinions.",
+     "files": [
+      "d3-19-tech-2.mp3"
+     ]
+    },
+    {
+     "say": "Both sides of an argument.",
+     "files": [
+      "d3-19-tech-3.mp3"
+     ]
+    },
+    {
+     "say": "Even predicting the future.",
+     "files": [
+      "d3-19-tech-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-19-edu.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Look at what you just did, though.",
+     "files": [
+      "d3-19-edu-1.mp3"
+     ]
+    },
+    {
+     "say": "Comparing past and present.",
+     "files": [
+      "d3-19-edu-2.mp3"
+     ]
+    },
+    {
+     "say": "Weighing both sides.",
+     "files": [
+      "d3-19-edu-3.mp3"
+     ]
+    },
+    {
+     "say": "Even suggesting ideas.",
+     "files": [
+      "d3-19-edu-4.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-20.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "Keep that one habit.",
+     "files": [
+      "d3-20-1.mp3"
+     ]
+    },
+    {
+     "say": "Your view, why, and an example from your life.",
+     "files": [
+      "d3-20-2.mp3"
+     ]
+    },
+    {
+     "say": "It works on any topic they throw at you.",
+     "files": [
+      "d3-20-3.mp3"
+     ]
+    }
+   ]
+  },
+  {
+   "file": "d3-21.mp3",
+   "voice": "sarah",
+   "lines": [
+    {
+     "say": "That is all three parts.",
+     "files": [
+      "d3-21-1.mp3"
+     ]
+    },
+    {
+     "say": "You have now practised every part of the speaking test.",
+     "files": [
+      "d3-21-2.mp3"
+     ]
+    },
+    {
+     "say": "Tomorrow, we put it all together and do an actual mock test,",
+     "files": [
+      "d3-21-3.mp3"
+     ]
+    },
+    {
+     "say": "covering Part 1, Part 2 and Part 3 together.",
+     "files": [
+      "d3-21-4.mp3"
+     ]
+    },
+    {
+     "say": "I hope you are excited. See you soon.",
+     "files": [
+      "d3-21-5.mp3"
+     ]
+    }
+   ]
+  }
+ ]
+}
