@@ -1,0 +1,25 @@
+@font-face{font-family:"InterDisplay-Regular";src:url(../assets/fonts/InterDisplay-Regular.woff2) format("woff2");font-weight:400;font-display:block}
+@font-face{font-family:"InterDisplay-Medium";src:url(../assets/fonts/InterDisplay-Medium.woff2) format("woff2");font-weight:500;font-display:block}
+@font-face{font-family:"InterDisplay-SemiBold";src:url(../assets/fonts/InterDisplay-SemiBold.woff2) format("woff2");font-weight:600;font-display:block}
+@font-face{font-family:"InterDisplay-Bold";src:url(../assets/fonts/InterDisplay-Bold.woff2) format("woff2");font-weight:700;font-display:block}
+@font-face{font-family:"Inter Display";src:url(../assets/fonts/InterDisplay-Regular.woff2) format("woff2");font-weight:400}
+@font-face{font-family:"Inter Display";src:url(../assets/fonts/InterDisplay-Medium.woff2) format("woff2");font-weight:500}
+@font-face{font-family:"Inter Display";src:url(../assets/fonts/InterDisplay-SemiBold.woff2) format("woff2");font-weight:600}
+@font-face{font-family:"Inter Display";src:url(../assets/fonts/InterDisplay-Bold.woff2) format("woff2");font-weight:700}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#07060D;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{overflow-x:hidden}
+#app{position:relative;min-height:100vh}
+.bp{display:none}
+.bp>*{transform-origin:top left}
+@media (max-width:599px){.bp-mobile{display:block}}
+@media (min-width:600px) and (max-width:1099px){.bp-tablet{display:block}}
+@media (min-width:1100px){.bp-desktop{display:block}}
+.bp-app{display:block}
+.tap{cursor:pointer}
+.tap:active{filter:brightness(.92)}
+/* screen transition */
+#app.leaving{opacity:0;transition:opacity .18s ease}
+#app.entering{animation:enter .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#app.entering{animation:none}}

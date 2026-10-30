@@ -1,0 +1,16 @@
+import {chromium} from 'playwright';
+const exe=process.env.HOME+'/Library/Caches/ms-playwright/chromium-1243/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing';
+const base=process.env.BASE||'http://localhost:8790'; const o='.context/tmp/test/';
+const b=await chromium.launch({executablePath:exe}); const p=await b.newPage({viewport:{width:1440,height:900}});
+p.on('pageerror',e=>console.log('ERR',e.message));
+const st=()=>p.evaluate(()=>({l:document.querySelector('.stage').dataset.l,t:document.querySelector('#rt')?.textContent,pt:document.querySelector('#pt')?.textContent,notes:[...document.querySelectorAll('.note-in')].map(i=>i.value).join('|'),face:document.querySelector('#fN').style.cssText.slice(0,80)}));
+await p.goto(base+'/?beat=q2#/test'); await p.waitForTimeout(6200);
+await p.keyboard.press('Space'); await p.waitForTimeout(3100); console.log('desk rec',await st());
+await p.setViewportSize({width:800,height:1000}); await p.waitForTimeout(900); console.log('tablet',await st()); await p.screenshot({path:o+'rz-t.png'});
+await p.setViewportSize({width:390,height:844}); await p.waitForTimeout(2100); console.log('mobile',await st()); await p.screenshot({path:o+'rz-m.png'});
+await p.setViewportSize({width:1280,height:800}); await p.waitForTimeout(900); console.log('back desk',await st()); await p.screenshot({path:o+'rz-d.png'});
+await p.goto(base+'/?beat=p2p#/test'); await p.waitForTimeout(1200);
+await p.locator('.note-in').nth(0).fill('Kyoto'); await p.locator('.note-in').nth(1).click(); await p.keyboard.type('a film I saw');
+await p.setViewportSize({width:390,height:844}); await p.waitForTimeout(900); console.log('prep mobile',await st(), await p.evaluate(()=>document.activeElement.className)); await p.screenshot({path:o+'rz-p-m.png'});
+await p.keyboard.type(' last year'); await p.setViewportSize({width:1440,height:900}); await p.waitForTimeout(900); console.log('prep desk',await st()); await p.screenshot({path:o+'rz-p-d.png'});
+await b.close();

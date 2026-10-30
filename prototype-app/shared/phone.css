@@ -1,0 +1,66 @@
+/* The app runs inside a phone: full screen on a phone, a framed 402×874 screen on anything wider */
+html,body{height:100%;background:#050409}
+@media (min-width:600px){html,body{background:#FFFFFF}}
+body{overflow:hidden;font-family:Geist,sans-serif}
+#chips{position:fixed;top:0;left:0;right:0;height:52px;z-index:20;display:flex;align-items:center;justify-content:flex-start;gap:8px;padding:0 12px;overflow-x:auto;scrollbar-width:none}
+#chips::-webkit-scrollbar{display:none}
+#chips button{flex-shrink:0}
+#chips button{height:34px;padding:0 14px;border-radius:999px;border:1px solid #FFFFFF26;background:transparent;color:#C9C6D6;font:500 13px/16px Geist,sans-serif;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+#chips button b{font-weight:700;margin-right:6px}
+#chips .screens{display:none}
+#chips button.on{background:#6C63FF;border-color:#6C63FF;color:#fff}
+#chips button:not(.on):hover{border-color:#FFFFFF55;color:#fff}
+#phone{position:fixed;left:50%;top:52px;transform:translateX(-50%);overflow:hidden;background:#0B0A12}
+@media (min-width:600px){
+  #phone{top:50%;left:50%;transform:translate(-50%,-50%);border-radius:44px;box-shadow:0 0 0 10px #16141F,0 0 0 11px #2A2738,0 40px 80px -30px #0006}
+  /* chips sit outside the phone, to its right */
+  #chips{top:50%;bottom:auto;right:auto;height:auto;transform:translateY(-50%);flex-direction:column;align-items:stretch;justify-content:flex-start;padding:0}
+  #chips::before{content:"Payment path";font:500 12px/16px Geist,sans-serif;color:#6B6880;margin:0 0 4px 4px}
+  #chips button{height:40px;border-color:#DDDCE6;color:#3A3848;text-align:left;padding:0 16px}
+  #chips button:not(.on):hover{border-color:#B9B7C8;color:#14121A}
+  #chips button.on{color:#fff}
+}
+#app{position:relative;width:402px;height:874px;transform-origin:0 0;overflow:hidden}
+.bp-app{display:block;position:absolute;inset:0}
+.bp-app>*{transform-origin:0 0}
+/* screen changes: the new screen fades up over the old */
+.bp-app.enter{animation:scrIn .38s cubic-bezier(.2,.8,.2,1) both}
+.bp-app.leave{animation:scrOut .3s ease both}
+@keyframes scrIn{from{opacity:0;transform:translateY(12px)}}
+@keyframes scrOut{to{opacity:0}}
+.bp-app.slideup{animation:slideUp .6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes slideUp{from{transform:translateY(40%);opacity:.3}}
+.tap{cursor:pointer}
+.tap:active{filter:brightness(.9)}
+.fadein{animation:fIn .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes fIn{from{opacity:0;transform:translateY(8px)}}
+.mic-live{animation:micLive 1s ease-in-out infinite}
+@keyframes micLive{50%{box-shadow:0 0 0 14px #FFFFFF22}}
+.toast{position:absolute;left:50%;top:70px;transform:translateX(-50%);z-index:30;background:#1E1C2A;border:1px solid #FFFFFF22;color:#E9E6F2;padding:10px 16px;border-radius:12px;font:500 14px/18px Geist,sans-serif;white-space:nowrap;animation:fIn .3s both}
+.confetti{position:absolute;inset:0;pointer-events:none;z-index:25;overflow:hidden}
+.confetti i{position:absolute;top:-10px;width:8px;height:12px;border-radius:2px;animation:fall 1.8s cubic-bezier(.3,.6,.4,1) forwards}
+@keyframes fall{to{transform:translateY(900px) rotate(540deg);opacity:.2}}
+@media (prefers-reduced-motion:reduce){.bp-app.enter,.bp-app.slideup,.fadein{animation:none}}
+
+/* screen chips: every screen of the chosen path, to jump straight to it */
+@media (min-width:600px){
+  #chips{max-height:calc(100vh - 40px);overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
+  #chips .screens{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;padding-top:14px;border-top:1px solid #ECEBF2}
+  #chips .screens::before{content:"Screens";width:100%;font:500 12px/16px Geist,sans-serif;color:#6B6880;margin:0 0 2px 4px}
+  #chips button.scr{height:30px;padding:0 11px;font-size:12.5px;border-color:#E3E2EA;color:#4A4858}
+  #chips button.scr.on{background:#14121A;border-color:#14121A;color:#fff}
+}
+/* graph → paywall */
+.gwrap{position:relative;transform-origin:50% 0;transition:transform .65s cubic-bezier(.2,.8,.2,1)}
+.gwrap.merge{transform:translateY(-117px) scaleY(.684)}
+.gwrap.merge .gtag{opacity:0}
+.merge{transition:transform .65s cubic-bezier(.2,.8,.2,1)}
+div.merge:not(.gwrap){transform:translateY(8px) scale(.9)}
+.gtag{position:absolute;display:flex;flex-direction:column;align-items:center;padding:6px 12px;border-radius:10px;background:#6C63FF;opacity:0;transform:translateY(8px) scale(.9);transition:opacity .35s,transform .35s cubic-bezier(.3,1.5,.5,1);pointer-events:none;white-space:nowrap}
+.gtag.in{opacity:1;transform:none}
+.gtag small{font:600 10px/13px Geist,sans-serif;letter-spacing:.06em;color:#DCD9FF}
+.gtag b{font:600 16px/20px "InterDisplay-SemiBold","Inter Display",sans-serif;color:#fff}
+/* "?" fills with grey from the bottom, over and over */
+.qfill{background:linear-gradient(0deg,#8E8AA3 50%,#2A2740 50%);background-size:100% 200%;background-position:0 0;-webkit-background-clip:text;background-clip:text;color:transparent!important;animation:qfill 1.8s ease-in-out infinite}
+@keyframes qfill{0%{background-position:0 0}50%{background-position:0 100%}100%{background-position:0 0}}
+.noscroll::-webkit-scrollbar{display:none}
