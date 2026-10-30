@@ -546,6 +546,18 @@ body{
   background:#1B2A5E;vertical-align:-4px;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .cue2line.bare{margin-left:0;border-bottom-color:transparent}
+/* a note too long for its line folds to one line; tap it to read the rest */
+.cue2line em,.cue2.notes .note em{display:block}
+.cue2line.clip em,.note.clip em{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cue2line.open em,.note.open em{white-space:normal;overflow:visible;text-overflow:clip}
+.cue2line.can,.note.can{display:flex;align-items:flex-end;gap:8px;cursor:pointer}
+.cue2line.can em,.note.can em{flex:1 1 auto;min-width:0}
+.more{flex:0 0 auto;width:20px;height:20px;border-radius:99px;background:#DFE4F1;
+  display:flex;align-items:center;justify-content:center;margin-bottom:5px;
+  transition:transform .35s var(--ease),background .2s}
+.can:hover .more{background:#CFD6EA}
+.open .more{transform:rotate(180deg)}
+.notehint{margin-top:14px;text-align:center;font-size:12.5px;font-weight:500;color:#6E6A63}
 .cue2.shrink{rotate:0deg}
 .cue2.shrink .cue2body{padding:18px 22px 20px;gap:10px}
 .cue2.notes .notelist{display:flex;flex-direction:column;gap:9px}
@@ -850,7 +862,7 @@ const CARDS = {
           points:['who this person is','what they taught you','how they taught you','and explain why it was important to you'],
           notes:['who','what','how','why']}
 };
-const NOTES = ['Mr Rao, maths','patience','stayed after class','stopped quitting'];
+const NOTES = ['Mr Rao, maths','patience','stayed after class every Tuesday to explain it again','stopped quitting'];
 
 const cueCard = (key,opts={}) => {
   const c = CARDS[key];
@@ -1151,6 +1163,23 @@ function answer(cap){
 }
 
 
+/* ---- a long note: one line, with a tap to read all of it ---- */
+const CHEV = `<b class="more"><svg width="11" height="7" viewBox="0 0 12 8" fill="none"><path d="M1.5 1.5 6 6l4.5-4.5" stroke="#5A6080" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></b>`;
+function foldLine(l){
+  const em = l && l.querySelector('em'); if(!em) return false;
+  l.classList.add('clip'); em.scrollLeft = 0;
+  if(em.scrollWidth - em.clientWidth < 3) return false;          /* it fits: leave it be */
+  if(!l.querySelector('.more')) l.insertAdjacentHTML('beforeend', CHEV);
+  l.classList.add('can');
+  if(!l.__tap){ l.__tap = 1; l.addEventListener('click', () => l.classList.toggle('open')); }
+  return true;
+}
+function foldNotes(){
+  let any = false;
+  document.querySelectorAll('.cue2line, .note').forEach(l => { if(foldLine(l)) any = true; });
+  const old = document.querySelector('.notehint'); if(old) old.remove();
+  if(any) slot.insertAdjacentHTML('beforeend', '<div class="notehint">Tap a note to read all of it</div>');
+}
 function runPrep(){
   avatar.className='avatar gone'; avatar2.className='avatar nolan gone';
   slot.style.cssText='top:186px';
@@ -1162,9 +1191,11 @@ function runPrep(){
     const em=lines[k].querySelector('em'), words=note.split(' ');
     words.forEach((w,j)=>{
       at(t,()=>{ em.textContent = words.slice(0,j+1).join(' ');
+        em.scrollLeft = em.scrollWidth;                 /* the line follows the caret, like a text field */
         lines.forEach((l,n)=>l.classList.toggle('caret',n===k)); });
       t += 360;                       /* a word at a time, at writing speed */
     });
+    at(t, () => foldLine(lines[k]));  /* written: a long note folds to one line */
     t += 980;                         /* and a beat before moving to the next point */
   });
   /* the clock */
@@ -1185,6 +1216,7 @@ function goSpeak(){
   card.classList.add('shrink');
   document.querySelectorAll('.cue2prow').forEach(r=>r.classList.add('gone'));
   document.querySelectorAll('.cue2line').forEach(l=>l.classList.add('bare'));
+  at(60, foldNotes);
   const kb=document.querySelector('.kbd'); if(kb) kb.classList.add('out');
   const p=$('prep'); if(p) p.classList.add('out');
   at(760,()=>{ const k=document.querySelector('.kbd'); if(k) k.remove();
@@ -1201,6 +1233,7 @@ function runRecord2(){
   if(card){ card.classList.add('shrink');
     document.querySelectorAll('.cue2prow').forEach(r=>r.classList.add('gone'));
     document.querySelectorAll('.cue2line').forEach(l=>l.classList.add('bare')); }
+  at(60, foldNotes);
   slot.style.cssText='top:146px';
   const N=20;
   extra.innerHTML=`<div class="rec2" id="rec2">
