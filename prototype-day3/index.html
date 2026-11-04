@@ -75,7 +75,9 @@ body{
   background:#fff;box-shadow:0 1px 5px rgba(0,0,0,.5);transition:left .55s var(--ease)}
 
 /* ---------- avatar ---------- */
-.avatar{position:absolute;left:50%;border-radius:var(--r-full);padding:5px;
+.avatar{position:absolute;left:50%;border-radius:var(--r-full);padding:5px;overflow:hidden;
+  /* a size of its own, so the video can never balloon if a state forgets to set one */
+  width:154px;height:154px;margin-left:-77px;top:150px;
   border:2px solid #A9805A;box-shadow:0 0 34px -6px rgba(190,140,86,.42);
   transition:width .72s var(--ease-out),height .72s var(--ease-out),
              top .72s var(--ease-out),margin-left .72s var(--ease-out),opacity .5s var(--ease),
@@ -801,6 +803,9 @@ body{
 </div>
 <script>
 const $ = id => document.getElementById(id);
+/* Sarah leaves from wherever she is: keep her size while she fades, or she blows up mid-fade */
+function hideAvatar(){ const size=['big','small','tiny'].find(c=>avatar.classList.contains(c))||'small';
+  avatar.className='avatar '+size+' gone'; }
 const avatar=$('avatar'), capD=$('capD'), capB=$('capB'), capBS=capB.querySelector('span'),
       slot=$('slot'), extra=$('extra'), fill=$('fill'), knob=$('knob'), list=$('beatlist');
 
@@ -1158,7 +1163,7 @@ function runQ(b){
 
 /* thirty seconds, the question still up, the shape of the answer pinned under it */
 function runRec(b){
-  avatar.className='avatar gone';
+  hideAvatar();
   slot.style.cssText='top:146px';
   slot.innerHTML = qCard(Q(b.q)[0]);
   const N=20;
@@ -1232,7 +1237,7 @@ function show(n){
   clear(); i=n; const b=B[n]; progress(n);
   [...list.children].forEach((c,k)=>{c.className='b'+(k===n?' on':k<n?' done':'')});
   const cur=list.children[n]; if(cur) cur.scrollIntoView({block:'nearest',behavior:'smooth'});
-  avatar.className='avatar '+b.av;
+  if(b.av&&b.av!=='gone') avatar.className='avatar '+b.av; else hideAvatar();
   capD.classList.add('cap-hidden'); capB.classList.add('cap-hidden');
   if(!b.keep){ slot.style.cssText='top:'+(b.top||436)+'px';
                slot.innerHTML = b.html? b.html() : ''; extra.innerHTML=''; }

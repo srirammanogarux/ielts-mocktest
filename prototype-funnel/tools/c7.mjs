@@ -1,0 +1,18 @@
+import {chromium} from 'playwright';
+const exe=process.env.HOME+'/Library/Caches/ms-playwright/chromium-1243/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing';
+const base=process.argv[2]||'http://localhost:8790'; const o='.context/tmp/proto/';
+const b=await chromium.launch({executablePath:exe});
+let p=await b.newPage({viewport:{width:402,height:874},hasTouch:true,isMobile:true}); p.on('pageerror',e=>console.log('ERR',e.message));
+await p.goto(base+'/#/deck'); await p.waitForTimeout(1800);
+console.log('deck height',await p.evaluate(()=>document.documentElement.scrollHeight));
+await p.screenshot({path:o+'g-deck-top.png'});
+await p.evaluate(()=>scrollTo(0,900)); await p.waitForTimeout(400); await p.screenshot({path:o+'g-deck-mid.png'});
+await p.goto(base+'/#/landing'); await p.waitForTimeout(1000); const s1=await p.evaluate(()=>document.querySelector('.bp-mobile .hscroll').scrollLeft); await p.waitForTimeout(2000);
+console.log('auto scroll', s1, await p.evaluate(()=>document.querySelector('.bp-mobile .hscroll').scrollLeft));
+await p.screenshot({path:o+'g-land-m.png'});
+await p.close();
+p=await b.newPage({viewport:{width:834,height:1100}}); await p.goto(base+'/#/landing'); await p.waitForTimeout(1200);
+console.log('tablet tilt cards',await p.evaluate(()=>document.querySelectorAll('.bp-tablet .tilt').length));
+const g=await p.evaluate(()=>{ const e=document.querySelector('.bp-tablet .tilt'); e.scrollIntoView({block:'center'}); const r=e.getBoundingClientRect(); return [r.x,r.y,r.width,r.height]; });
+await p.mouse.move(g[0]+g[2]*0.8,g[1]+g[3]*0.2); await p.waitForTimeout(500); await p.screenshot({path:o+'g-tilt-t.png'});
+await b.close();

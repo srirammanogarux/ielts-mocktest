@@ -1,0 +1,36 @@
+/* Gift → coupon, ported from the onboarding-activation-funnel prototype (same art, same motion) */
+:root{--g-ease-out:cubic-bezier(.22,1,.36,1);--g-ease-spring:cubic-bezier(.34,1.56,.64,1)}
+.giftscr{position:relative;overflow:hidden;cursor:pointer;background:linear-gradient(155deg,#0B0A12 47%,#1D1A4E 123%)}
+.gift-stage{position:absolute;left:0;top:0;width:360px;height:780px;transform:scale(1.1167);transform-origin:top left}
+.g-ray{position:absolute;max-width:none}
+.gr-big{left:1px;top:278px;width:357px}.gr-1{left:180px;top:50px;width:179px}.gr-2{left:1px;top:50px;width:179px;transform:scaleX(-1)}
+.gr-3{left:180px;top:0;width:120px}.gr-4{left:61px;top:0;width:120px;transform:scaleX(-1)}
+.gift-title{position:absolute;left:50%;top:120px;transform:translateX(-50%);width:300px;margin:0;text-align:center;font:700 31px/1.05 "InterDisplay-Bold","Inter Display",sans-serif;letter-spacing:-.01em;color:#FFFBEC;z-index:3;transition:opacity .4s var(--g-ease-out)}
+.gift-tap{position:absolute;left:50%;top:548px;transform:translateX(-50%);margin:0;font:400 16px "Inter Display",sans-serif;color:rgba(255,255,255,.7);white-space:nowrap;z-index:3;transition:opacity .3s var(--g-ease-out);animation:tip-float 2.2s ease-in-out infinite}
+@keyframes tip-float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-4px)}}
+.giftscr.open .gift-tap,.giftscr.open .gift-title{opacity:0}
+.gift-closed{position:absolute;left:50%;top:405px;transform:translate(-50%,-50%);transform-origin:50% 68%;width:660px;max-width:none;z-index:2;transition:opacity .4s var(--g-ease-out);animation:gift-wobble 3.4s var(--g-ease-out) .8s infinite}
+@keyframes gift-wobble{0%,60%,100%{transform:translate(-50%,-50%) rotate(0)}63%{transform:translate(-50%,-51.2%) rotate(-3.4deg)}67%{transform:translate(-50%,-51.8%) rotate(3deg)}71%{transform:translate(-50%,-51%) rotate(-2.3deg)}75%{transform:translate(-50%,-51.4%) rotate(1.7deg)}79%{transform:translate(-50%,-50.4%) rotate(-1deg)}83%{transform:translate(-50%,-50%) rotate(0)}}
+.giftscr.open .gift-closed{opacity:0;animation:none;transform:translate(-50%,-50%) scale(.94);transition:opacity .4s var(--g-ease-out),transform .4s var(--g-ease-out)}
+.gift-open{position:absolute;inset:0;z-index:2;opacity:0;pointer-events:none;transition:opacity .35s var(--g-ease-out)}
+.giftscr.open .gift-open{opacity:1}
+.gift-open>*{position:absolute;max-width:none}
+.go-beam{left:50%;top:230px;width:492px;transform:translateX(-50%) scaleY(-1);opacity:.85}
+.go-glow{left:8px;top:238px;width:344px}
+.go-base{left:99px;top:486px;width:168px}
+.go-box{left:99px;top:490px;width:168px;height:127px;overflow:hidden;background:linear-gradient(180deg,#7B73FF 0%,#6C63FF 14%,#4A42C4 100%);box-shadow:inset 0 -14px 26px rgba(0,0,0,.22)}
+.go-lip{position:absolute;top:0;left:0;right:0;height:9px;background:#3B34A0}
+.go-ribbon{position:absolute;left:67px;top:0;bottom:0;width:17px;background:linear-gradient(180deg,#FBEEB8,#EBD891)}
+.go-r2{left:85px;width:16px;background:linear-gradient(180deg,#FFF5CA,#F2E3A6)}
+.go-lidshadow{left:99px;top:502px;width:168px}
+.go-lid{left:92px;top:167px;width:181px;transform:translateY(258px) scale(.97);transition:transform .9s var(--g-ease-spring)}
+.giftscr.open .go-lid{transform:none;transition-delay:.05s}
+.gift-coupon{position:absolute;left:68px;top:304px;width:224px;height:128px;opacity:0;transform:translateY(150px) scale(.5);transition:opacity .5s var(--g-ease-out) .25s,transform .8s var(--g-ease-spring) .25s}
+.giftscr.open .gift-coupon{opacity:1;transform:none}
+.gift-coupon .gc-a,.gift-coupon .gc-b{position:absolute;inset:0;width:100%}
+.gift-coupon .gc-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+.gift-coupon .gc-txt img{width:27px;height:27px}
+.gift-coupon .gc-txt small{font:600 12px "Inter Display",sans-serif;letter-spacing:-.01em;color:#000}
+.gift-coupon .gc-txt b{font:700 31px "InterDisplay-Bold","Inter Display",sans-serif;letter-spacing:-.01em;color:#C7A014}
+.fx-canvas{position:absolute;inset:0;pointer-events:none;z-index:6}
+@media (prefers-reduced-motion:reduce){.gift-closed{animation:none}}

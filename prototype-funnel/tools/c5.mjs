@@ -1,0 +1,15 @@
+import {chromium} from 'playwright';
+const exe=process.env.HOME+'/Library/Caches/ms-playwright/chromium-1243/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing';
+const base=process.argv[2]||'http://localhost:8790'; const o='.context/tmp/proto/';
+const b=await chromium.launch({executablePath:exe});
+const p=await b.newPage({viewport:{width:412,height:880},hasTouch:true,isMobile:true,deviceScaleFactor:2});
+p.on('pageerror',e=>console.log('ERR',e.message));
+const at=async(t)=>p.evaluate(t=>{ const e=[...document.querySelectorAll('.bp-mobile *')].find(e=>!e.children.length&&e.textContent.trim().startsWith(t)); e?.scrollIntoView({block:'center'}); },t);
+await p.goto(base+'/#/landing'); await p.waitForTimeout(1500);
+console.log('ex row', await p.evaluate(()=>{ const r=document.querySelector('.bp-mobile .hscroll'); return r&&[r.scrollWidth,r.clientWidth,getComputedStyle(r).overflowX]; }));
+await at('100+ mock tests'); await p.evaluate(()=>scrollBy(0,250)); await p.waitForTimeout(600); await p.screenshot({path:o+'m-fold.png'});
+await at('Tap to see a Band 8'); await p.waitForTimeout(400);
+await p.locator('.bp-mobile .flip-inner').tap(); await p.waitForTimeout(1000); await p.screenshot({path:o+'m-flip.png'});
+await at('Sample · Band score'); await p.waitForTimeout(2200); await p.screenshot({path:o+'m-score.png'});
+await p.goto(base+'/#/deck'); await p.waitForTimeout(1800); await p.screenshot({path:o+'m-deck.png'});
+await b.close();

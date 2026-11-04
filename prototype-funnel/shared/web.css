@@ -1,0 +1,77 @@
+/* folder cards: files slide out and the folder takes the topic colour on hover */
+.folder{cursor:pointer}
+.folder>*{transition:transform .35s cubic-bezier(.2,.8,.2,1),background .35s ease,background-image .35s ease,filter .35s ease}
+.folder .f-back,.folder .f-tab{transition:background-color .35s ease}
+.folder:hover .f-file1{transform:translate(-5%,-29%) rotate(-4deg)}
+.folder:hover .f-file2{transform:translate(4.5%,-34%) rotate(4deg);box-shadow:#000000AA 0 18px 30px -8px!important}
+.folder .f-open{display:none;font-weight:600!important;color:#fff!important}
+.folder:hover .f-open{display:block}
+.folder:hover .f-with{display:none}
+.folder:hover .f-label{color:rgba(255,255,255,.85)!important}
+.folder:hover .f-back,.folder:hover .f-tab{background-color:var(--f-back)!important}
+.folder .f-front::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,var(--f-top),var(--f-bottom));opacity:0;transition:opacity .35s ease;pointer-events:none}
+.folder .f-front>*{position:relative}
+.folder:hover .f-front::before{opacity:1}
+.folder .f-front *{transition:color .35s ease}
+.folder:hover .f-front *{color:#fff!important}
+.folder:hover .f-front div[style*="indigo-300"]{color:rgba(255,255,255,.8)!important}
+/* flip card */
+.flip-wrap{perspective:1600px}
+.flip-inner{position:relative;transition:transform .7s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.flip-inner.flipped{transform:rotateY(180deg)}
+.flip-face{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.flip-back{position:absolute!important;inset:0;transform:rotateY(180deg)}
+/* topic strip marquee */
+.marquee{animation:marq 40s linear infinite}
+/* the text is doubled, so -50% loops seamlessly */
+.marquee.rev{animation-direction:reverse;animation-duration:48s}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee{animation:none}}
+.hscroll{flex-shrink:0;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none;scroll-snap-type:x proximity}
+.hscroll::-webkit-scrollbar{display:none}
+/* examiner wall tilt */
+.tilt{transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease;will-change:transform;z-index:1}
+.tilt:hover{z-index:5;border-color:rgba(255,255,255,.7)!important;box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
+.tilt-glare{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .25s ease;border-radius:inherit}
+.tilt:hover .tilt-glare{opacity:1}
+/* FAQ */
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s cubic-bezier(.2,.8,.2,1)}
+.faq-a>div{overflow:hidden}
+.open>.faq-a{grid-template-rows:1fr}
+/* secondary button */
+.btn-outline{display:flex!important;align-items:center;height:56px;padding-inline:28px;border:1px solid rgba(255,255,255,.22);border-radius:999px;color:var(--color-ob-text-hi)!important;cursor:pointer;transition:border-color .2s ease,background-color .2s ease}
+.btn-outline:hover{border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.05)}
+@media (prefers-reduced-motion:reduce){.tilt,.faq-a{transition:none}}
+.folder-grid{display:flex!important;flex-direction:column;gap:18px!important;overflow:visible!important}
+.folder-line{display:flex;gap:12px;padding-right:20px;flex-shrink:0}
+.folder-line>.folder{zoom:.54}
+/* slip: handwriting appears as if written */
+.ink{animation:ink .5s ease both}
+@keyframes ink{from{clip-path:inset(0 100% 0 0);opacity:.4}to{clip-path:inset(0 0 0 0);opacity:1}}
+/* READY stamp lands on the slip */
+.stamp-in{animation:stamp .45s cubic-bezier(.3,1.6,.5,1) .5s both}
+@keyframes stamp{from{opacity:0;scale:1.8}to{opacity:1;scale:1}}
+@media (prefers-reduced-motion:reduce){.ink,.stamp-in{animation:none}}
+/* demo payment sheet */
+.paysheet{position:fixed;inset:0;z-index:50;background:#0008;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
+.paysheet.in{opacity:1}
+.ps-card{width:340px;max-width:calc(100vw - 32px);background:#fff;border-radius:16px;overflow:hidden;font-family:Geist,sans-serif;color:#14121A;transform:translateY(12px);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.paysheet.in .ps-card{transform:none}
+.ps-top{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:#0B2A5B;color:#fff;font-size:15px}.ps-top span{opacity:.85}
+.ps-body{display:flex;flex-direction:column;align-items:center;gap:10px;padding:34px 20px 26px}
+.ps-spin{width:40px;height:40px;border-radius:999px;border:3px solid #E3E6EE;border-top-color:#2F6BFF;animation:psspin .8s linear infinite}
+.ps-spin.ok{animation:none;border-color:#3DD68C;background:#3DD68C}
+@keyframes psspin{to{transform:rotate(360deg)}}
+.ps-msg{font-weight:600;font-size:16px}.ps-note{font-size:13px;color:#6B7086}
+.ps-foot{padding:12px;text-align:center;font-size:12px;color:#6B7086;border-top:1px solid #EEF0F5}
+/* prototype only: pick the payment path on the result screen */
+#pathchips{position:fixed;z-index:40;left:50%;bottom:16px;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:6px;border-radius:999px;background:#15131DF2;border:1px solid #FFFFFF1F;box-shadow:0 12px 30px -10px #000;font-family:Geist,sans-serif;white-space:nowrap;max-width:calc(100vw - 16px);overflow-x:auto}
+body:has(#pathchips){padding-bottom:64px}
+#pathchips span{font-size:12px;color:#8E8AA3;padding:0 8px 0 10px}
+#pathchips button{height:30px;padding:0 12px;border-radius:999px;border:1px solid #FFFFFF22;background:none;color:#C9C6D6;font:500 12.5px Geist,sans-serif;cursor:pointer}
+#pathchips button b{margin-right:5px}
+#pathchips button.on{background:#6C63FF;border-color:#6C63FF;color:#fff}
+@media (max-width:599px){#pathchips span{display:none}#pathchips button{padding:0 10px}}
+.qr-demo{transition:transform .2s ease,box-shadow .2s ease}
+.qr-demo:hover{transform:translateY(-3px);box-shadow:0 20px 40px -16px #0009}
+.qr-hint{margin-top:10px;padding:6px 12px;border-radius:999px;background:#14121A;color:#fff;font:500 13px/16px Geist,sans-serif}
